@@ -17,5 +17,6 @@ describe('all', () => {
       4: { name: 'Alice', age: 22, isSubscribed: true },
       5: { name: 'David', age: 48, isSubscribed: false },
     });
-``  });
+    ``;
+  });
 });

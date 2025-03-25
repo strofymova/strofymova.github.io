@@ -12,7 +12,7 @@ export const getFakeApi = async (): Promise<void> => {
 export class SomeClass {
   set: Set<number>;
   channel: BroadcastChannel;
-  
+
   constructor() {
     this.set = new Set([1]);
     this.channel = new BroadcastChannel('test-broadcast-channel');
@@ -37,11 +37,10 @@ export type Percent = {
 
 // Здесь, возможно, нужно использовать as, возможно в switch передавать немного по-другому
 const getDataAmount = (data: Data): number => {
-
   switch (data.type) {
     case 'Money':
     case 'Percent':
-      return (data.value.constructor.name === 'Money') ? (data.value as Money).amount : 0;
+      return data.value.constructor.name === 'Money' ? (data.value as Money).amount : 0;
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const unhandled: never = data.type; // здесь, возможно, нужно использовать нечто другое. :never должен остаться
