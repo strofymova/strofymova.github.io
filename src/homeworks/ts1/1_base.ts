@@ -18,13 +18,21 @@ export const round = (value: number, accuracy = 2): number => {
 
 const transformRegexp =
   /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
-export const getTransformFromCss = (transformCssString: string): { x: number; y: number } => {
+
+export type Coordinate = {
+  x: number,
+  y: number
+}
+
+export const getTransformFromCss = (transformCssString: string): Coordinate => {
   const data: RegExpMatchArray | null = transformCssString.match(transformRegexp);
   if (!data) return { x: 0, y: 0 };
-  return {
+
+  const coordinate: Coordinate = {
     x: parseInt(data[6], 10),
-    y: parseInt(data[8], 10),
-  };
+    y: parseInt(data[8], 10)
+  }
+  return coordinate;
 };
 
 export const getColorContrastValue = ([red, green, blue]: [number, number, number]): number =>
@@ -35,7 +43,7 @@ export const getContrastType = (contrastValue: number): string => (contrastValue
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
 export const longColorRegExp = /^#[0-9a-f]{6}$/i;
 
-export const checkColor = (color: string): void => {
+export const checkColor = (color: string): void | never => {
   if (!longColorRegExp.test(color) && !shortColorRegExp.test(color)) throw new Error(`invalid hex color: ${color}`);
 };
 
@@ -53,7 +61,11 @@ export const hex2rgb = (color: string): [number, number, number] => {
   return [red, green, blue];
 };
 
-export const getNumberedArray = (arr: number[]): { value: number; index: number }[] =>
+export type ArrayItem = {
+  value: number,
+  index: number
+}
+export const getNumberedArray = (arr: number[]): ArrayItem[] =>
   arr.map((value: number, index: number) => ({ value, index }));
 export const toStringArray = (arr: number[]): string[] =>
   arr.map((value: number, index: number) => `${value}_${index}`);
