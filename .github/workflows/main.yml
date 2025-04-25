@@ -55,7 +55,7 @@ jobs:
         with:
           branch: gh-pages
           folder: storybook-static
-          commit-message: "Automatically publish Storybook"
+          commit-message: "Automatically publish Storybook" 
 
       # Останавливаем выполнение строго при неудачных тестах
       - name: Fail on failed tests
