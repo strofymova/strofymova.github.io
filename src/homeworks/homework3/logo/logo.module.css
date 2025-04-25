@@ -1,0 +1,10 @@
+.main {
+    background-image: url('../../../src/stories/assets/custom-logo.svg');
+    background-size: contain;
+    background-position: left;
+    position: relative;
+    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    float: left;
+}
