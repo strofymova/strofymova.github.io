@@ -16,9 +16,7 @@ const Modal: React.FC<ModalProps> = ({ visible = false, children }) => {
         <button className={styles.closeButton} aria-label="Закрыть">
           &times;
         </button>
-        <div className={styles.modalBody}>
-          {children}
-        </div>
+        <div className={styles.modalBody}>{children}</div>
       </div>
     </div>
   );
