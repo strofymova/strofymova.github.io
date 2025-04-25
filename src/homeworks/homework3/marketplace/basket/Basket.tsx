@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import clsx from 'clsx';
 import style from './basket.module.css';
 
@@ -17,7 +17,6 @@ interface IBasketProps {
 }
 
 interface IBasketButtonProps {
-  count: number;
   disabled: boolean;
   onClick(): void;
 }
@@ -28,7 +27,7 @@ interface IBasketCounterComponentProps {
   onClickDecrement(): void;
 }
 
-function BasketButton({ count, disabled, onClick }: IBasketButtonProps): React.ReactElement {
+function BasketButton({disabled, onClick }: IBasketButtonProps): React.ReactElement {
   return (
     <button className={clsx(style.basket_btn, style.base_btn)} disabled={disabled} onClick={onClick}>
       В корзину
@@ -65,7 +64,7 @@ export function Basket({ initCount, disabled, className }: IBasketProps): React.
   return (
     <div className={clsx(className, style.main)}>
       {count === 0 ? (
-        <BasketButton count={count} onClick={onClickIncrement} disabled={disabled} />
+        <BasketButton onClick={onClickIncrement} disabled={disabled} />
       ) : (
         <BasketCounterComponent count={count} onClickIncrement={onClickIncrement} onClickDecrement={onClickDecrement} />
       )}

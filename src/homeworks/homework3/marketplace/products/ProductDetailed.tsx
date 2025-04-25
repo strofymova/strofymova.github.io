@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import style from './product_detailed.module.css';
 import { IProduct, ProductItem } from './Product';
 import unknowImageUrl from '../../../../stories/assets/custom-unknow-product.svg';

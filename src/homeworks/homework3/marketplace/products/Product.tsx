@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import style from './product.module.css';
-import { title } from 'process';
 import Basket from '../basket/Basket';
 import unknowImageUrl from '../../../../stories/assets/custom-unknow-product.svg';
 
