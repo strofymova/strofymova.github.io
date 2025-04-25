@@ -1,0 +1,75 @@
+.main {
+    width: 500px;
+    height: 300px;
+    border: solid 1px rgb(25, 131, 99);
+    border-radius: 1px;
+}
+
+.title {
+    height: 10%;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to bottom, rgb(25, 131, 99), rgb(10, 100, 78));
+    color: white;
+    font-size: 16pt;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.img {
+    height: 80%;
+    max-width: 60%;
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+}
+
+.info {
+    padding: 10px 10px 10px 10px;
+    height: 80%;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    > div:last-of-type {
+        margin-top: 68%;
+        float: right;
+    }
+}
+
+.item {
+    display: block;
+    width: 100%;
+    height: max-content;
+    padding-top: 5px;
+    color: rgb(10, 100, 78);
+}
+
+.item_title {
+    display: inline-block;
+    left: 0;
+    width: 30%;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9pt;
+}
+
+.item_value {
+    display: inline-block;
+    left: 50%;
+    width: 70%;
+    text-align: right;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11pt;
+}
+
+
+.desc {
+    .item_value {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+}
