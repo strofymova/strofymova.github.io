@@ -1,0 +1,11 @@
+.main {
+    position: sticky;
+    top: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    width: 100%;
+    font-size: 70px;
+    float: left;
+    display: block;
+    border-bottom: 1px solid grey;
+}
