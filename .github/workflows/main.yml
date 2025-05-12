@@ -34,11 +34,19 @@ jobs:
       - name: Run tests and linter
         run: npm run lint && npm test
 
+<<<<<<< Updated upstream
        # Собираем приложение
       # - name: Build Application
         # run: npm run build
 
       # Публикуем приложение на Github Pages
+=======
+      # # Собираем приложение
+      # - name: Build Application
+      #   run: npm run build
+
+      # # Публикуем приложение на Github Pages
+>>>>>>> Stashed changes
       # - name: Deploy to Github Pages
       #   uses: JamesIves/github-pages-deploy-action@4.2.1
       #   with:
