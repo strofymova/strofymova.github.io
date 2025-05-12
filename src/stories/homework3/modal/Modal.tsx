@@ -7,13 +7,13 @@ interface ModalProps {
   children?: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ visible = false, children }) => {
+const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose }) => {
   if (!visible) return null;
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <button className={styles.closeButton} aria-label="Закрыть">
+        <button className={styles.closeButton} onClick={onClose} aria-label="Закрыть">
           &times;
         </button>
         <div className={styles.modalBody}>
