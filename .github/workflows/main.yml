@@ -2,7 +2,7 @@ name: Test, Lint, Build and Deploy on Github Pages
 
 on:
   push:
-    branches: ["master", "main", "gh-pages"]
+    branches: ["master", "main"]
 
   # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
   workflow_dispatch:
@@ -33,20 +33,11 @@ jobs:
       # Запускаем тесты и линтер
       - name: Run tests and linter
         run: npm run lint && npm test
-
-<<<<<<< Updated upstream
-       # Собираем приложение
-      # - name: Build Application
-        # run: npm run build
-
-      # Публикуем приложение на Github Pages
-=======
       # # Собираем приложение
       # - name: Build Application
       #   run: npm run build
 
       # # Публикуем приложение на Github Pages
->>>>>>> Stashed changes
       # - name: Deploy to Github Pages
       #   uses: JamesIves/github-pages-deploy-action@4.2.1
       #   with:
