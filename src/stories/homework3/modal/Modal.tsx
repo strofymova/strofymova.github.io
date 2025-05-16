@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './modal.module.css'; // Assuming CSS Modules
+import styles from './modal.module.css';
 
 interface ModalProps {
   visible?: boolean;
-  onClose?: () => void; // Optional for Storybook controls
+  onClose?: () => void;
   children?: React.ReactNode;
 }
 

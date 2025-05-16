@@ -3,7 +3,7 @@ import styles from './logo.module.css';
 
 
 
-export function Logo (): React.ReactElement {
+export function Logo () {
       return ( 
         <img className={styles.main}/>
       )

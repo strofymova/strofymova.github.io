@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import style from "./product_detailed.module.css"
 import { IProduct, ProductItem } from "./Product";
 import unknowImageUrl from "../../../../stories/assets/custom-unknow-product.svg";
@@ -9,10 +8,10 @@ export interface IProductDetail extends IProduct {
     category: string;
 }
 
-export function ProductDetailed(product: IProductDetail): React.ReactNode {
+export function ProductDetailed(product: IProductDetail) {
     const initCount:number = 0;
     const basketBtnDisable = product.disable && true;
-    const imageUrl = product.imageUrl === null ? unknowImageUrl : product.imageUrl;
+    const imageUrl:string = product.imageUrl === null ? unknowImageUrl : product.imageUrl;
     return (
         <div className={style.main}>
             <div className={style.title}>Подробное описание товара</div>

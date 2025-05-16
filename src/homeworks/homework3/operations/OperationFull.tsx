@@ -12,7 +12,7 @@ interface IOperationItemProps {
     disable?: boolean
 }
 
-function OperationItem (operationItem:IOperationItemProps): React.ReactElement {
+function OperationItem (operationItem:IOperationItemProps) {
     const disable = operationItem.disable === null ? false : operationItem.disable;
     return (
         <div className={styles.div_row}>
@@ -22,7 +22,7 @@ function OperationItem (operationItem:IOperationItemProps): React.ReactElement {
     )
 }
 
-export function OperationFull (props: IOperationFullProps): React.ReactNode {
+export function OperationFull (props: IOperationFullProps) {
     const enabled: boolean = false;
 
     return (
