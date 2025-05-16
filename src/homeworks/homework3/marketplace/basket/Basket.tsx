@@ -28,7 +28,7 @@ interface IBasketCounterComponentProps {
     onClickDecrement(): void;
 }
 
-function BasketButton({count, disabled, onClick} : IBasketButtonProps):React.ReactElement {
+function BasketButton({disabled, onClick} : IBasketButtonProps):React.ReactElement {
     return (
         <button className={clsx(style.basket_btn, style.base_btn)} disabled={disabled} onClick={onClick}>В корзину</button>
     )
@@ -44,7 +44,7 @@ function BasketCounterComponent({count, onClickIncrement, onClickDecrement} : IB
     )
 }
 
-export function Basket ({initCount, disabled, className} : IBasketProps): React.ReactNode {
+export function Basket ({initCount, disabled, className} : IBasketProps) {
     const [count, setCount] = useState(initCount);
     function onClickIncrement() : void {
         setCount((prev) => getIncrement(prev));

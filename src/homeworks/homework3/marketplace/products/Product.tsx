@@ -19,7 +19,7 @@ interface IProductItemProps {
     className?: string;
 }
 
-export function ProductItem (props:IProductItemProps): React.ReactElement {
+export function ProductItem (props:IProductItemProps) {
     return (
         <div className={clsx(props.className, style.item)}>
             <div className={style.item_title}>{props.title}</div>
@@ -28,7 +28,7 @@ export function ProductItem (props:IProductItemProps): React.ReactElement {
     )
 }
 
-export function Product(product: IProduct): React.ReactNode {
+export function Product(product: IProduct) {
     return (
         <div className={style.main}>
             <div className={style.title}>Карточка товара</div>

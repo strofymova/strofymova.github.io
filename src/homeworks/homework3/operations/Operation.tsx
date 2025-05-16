@@ -8,7 +8,7 @@ export interface IOperationProps  {
     description: string,
 }
 
-export function Operation (props: IOperationProps): React.ReactNode {
+export function Operation (props: IOperationProps) {
     return (
        <div className={styles.main}>
             <div>Cумма: {props.summ}</div>
