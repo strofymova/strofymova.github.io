@@ -28,13 +28,13 @@ interface IBasketCounterComponentProps {
     onClickDecrement(): void;
 }
 
-function BasketButton({disabled, onClick} : IBasketButtonProps):React.ReactElement {
+function BasketButton({disabled, onClick} : IBasketButtonProps) {
     return (
         <button className={clsx(style.basket_btn, style.base_btn)} disabled={disabled} onClick={onClick}>В корзину</button>
     )
 }
 
-function BasketCounterComponent({count, onClickIncrement, onClickDecrement} : IBasketCounterComponentProps): React.ReactElement {
+function BasketCounterComponent({count, onClickIncrement, onClickDecrement} : IBasketCounterComponentProps) {
     return (
         <>
             <button className={clsx(style.counter_btn, style.base_btn)} onClick={onClickDecrement}>-</button>

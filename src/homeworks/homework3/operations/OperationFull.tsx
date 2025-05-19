@@ -12,29 +12,29 @@ interface IOperationItemProps {
     disable?: boolean
 }
 
-function OperationItem (operationItem:IOperationItemProps) {
-    const disable = operationItem.disable === null ? false : operationItem.disable;
+function OperationItem ({title, value, disable}: IOperationItemProps) {
+    const isDisable = disable === null ? false : disable;
     return (
         <div className={styles.div_row}>
-            {operationItem.title}: 
-            <input type='text' className={styles.input_line} disabled={disable} value={operationItem.value}/>
+            {title}: 
+            <input type='text' className={styles.input_line} disabled={isDisable} value={value}/>
         </div>
     )
 }
 
-export function OperationFull (props: IOperationFullProps) {
+export function OperationFull ({category, date, description, name, summ}: IOperationFullProps) {
     const enabled: boolean = false;
 
     return (
         <div className={styles.main}>
-            <OperationItem title='Сумма' value={props.summ} disable={!enabled}/>
-            <OperationItem title='Категория' value={props.category} disable={!enabled}/>
-            <OperationItem title='Название' value={props.name} disable={!enabled}/>
+            <OperationItem title='Сумма' value={summ} disable={!enabled}/>
+            <OperationItem title='Категория' value={category} disable={!enabled}/>
+            <OperationItem title='Название' value={name} disable={!enabled}/>
             <div className={styles.description}>
                 Описание:  
-                <textarea className={styles.input_multiline}  disabled={!enabled} value={props.description}></textarea> 
+                <textarea className={styles.input_multiline}  disabled={!enabled} value={description}></textarea> 
             </div>
-            <OperationItem title='Дата' value={props.date} disable={!enabled}/>
+            <OperationItem title='Дата' value={date} disable={!enabled}/>
             <button className={styles.button} disabled={!enabled}>Редактировать</button>
         </div>
     );

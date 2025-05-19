@@ -8,13 +8,13 @@ export interface IOperationProps  {
     description: string,
 }
 
-export function Operation (props: IOperationProps) {
+export function Operation ({summ, category, name, description}: IOperationProps) {
     return (
        <div className={styles.main}>
-            <div>Cумма: {props.summ}</div>
-            <div>Категория: {props.category}</div>
-            <div>Название: {props.name}</div>
-            <div className={styles.description}>Описание: {props.description}</div>
+            <div>Cумма: {summ}</div>
+            <div>Категория: {category}</div>
+            <div>Название: {name}</div>
+            <div className={styles.description}>Описание: {description}</div>
         </div>
     );
 }
