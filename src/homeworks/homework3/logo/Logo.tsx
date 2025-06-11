@@ -5,7 +5,7 @@ import styles from './logo.module.css';
 
 export function Logo (): React.ReactElement {
       return ( 
-        <img className={styles.main}/>
+        <div className={styles.main}/>
       )
 }
 

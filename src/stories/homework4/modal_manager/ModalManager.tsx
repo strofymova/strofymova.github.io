@@ -1,6 +1,6 @@
 import React, { ReactNode, useState, ChangeEventHandler, useEffect} from "react";
 import styles from './modal_manager.module.css'; 
-import Modal from "../homework3/modal/Modal";
+import Modal from "../../homework3/modal/Modal";
 interface IModalManagerProps {
     initialText?: string;
 }

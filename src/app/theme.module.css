@@ -1,0 +1,30 @@
+:root {
+  --main-grey-color:  rgb(83, 92, 105);
+  --main-black-color: black;
+  --main-white-color: white;
+  --main-ligth-grey-color:rgb(206, 214, 224);
+}
+
+/* [data-theme = "0"] {
+    background-color: var(--main-white-color);
+    color: var(--main-black-color);
+    border-color: var(--main-grey-color);
+}
+
+[data-theme = "1"] {
+    background-color: var(--main-grey-color);
+    color: var(--main-white-color);
+    border-color:var(--main-white-color);
+} */
+
+.light {
+    background-color: var(--main-white-color);
+    color: var(--main-black-color);
+    border-color: var(--main-grey-color);
+}
+
+.dark {
+    background-color: var(--main-grey-color);
+    color: var(--main-white-color);
+    border-color:var(--main-white-color);
+}
