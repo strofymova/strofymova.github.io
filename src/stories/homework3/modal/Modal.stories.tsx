@@ -1,10 +1,19 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryContext, StoryObj } from '@storybook/react';
 import Modal from './Modal';
+import LocalizationProvider from '../../../stories/homework4/localization/LocalizationProvider';
+import { Locale } from '../../../stories/homework4/localization/settings';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
+  decorators: [
+      (Story, context:StoryContext) => (
+        <LocalizationProvider initialLocale={Locale.ru}>
+              <Story/>
+        </LocalizationProvider>
+      ),
+    ],
   argTypes: {
     visible: {
       control: 'boolean',
