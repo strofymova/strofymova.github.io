@@ -10,10 +10,10 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose }) => {
-  if (!visible) return null;
-
   const {locale, handleSwitchLocale} = useContext(LocaleContext);
   const {t} = useTranslation();
+  
+  if (!visible) return null;
 
   return (
     <div className={styles.modalOverlay}>
