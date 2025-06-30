@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { LocaleContext } from "src/app/App";
+import { LocaleContext } from "../../../app/App";
 import { Locale } from "./settings";
 
 const LocalizationSwitcher: React.FC = () => {

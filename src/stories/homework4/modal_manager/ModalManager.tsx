@@ -9,6 +9,10 @@ const ModalManager: React.FC<IModalManagerProps> = ({initialText}) => {
     const isShowingModal:boolean = false;
     const [showModal, setShowModal] = useState(isShowingModal);
     const [inputText, setInputText] = useState(initialText);
+    useEffect(()=> {
+        setInputText(initialText);
+    }, [initialText]);
+
 
     const handleOpenModalClick = () => {
        setShowModal(true);
