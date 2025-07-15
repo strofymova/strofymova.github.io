@@ -1,0 +1,21 @@
+@import "../../app/theme.module.css";
+
+.main {
+    display: flex;
+    margin-block: auto;
+    margin-left: auto;
+    margin-top: 0;
+    border: 1px solid black;
+}
+
+.dark {
+    background-color: var(--main-grey-color);
+    color: var(--main-ligth-grey-color);
+    border: 1px solid var(--main-ligth-grey-color);
+}
+
+.light {
+    background-color: var(--main-white-color);
+    color: var(--main-grey-color);
+    border: 1px solid var(--main-grey-color);
+} 
