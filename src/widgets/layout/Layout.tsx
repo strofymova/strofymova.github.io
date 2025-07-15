@@ -3,7 +3,7 @@ import Header from '../header/Header'
 import styles from './layout.module.css'
 import {Theme, ThemeContext } from '../../app/App'
 import clsx from 'clsx';
-import { ProductList, IProductList } from '../../homework7/product_list/ProductList'
+import { ProductList, IProductList } from '../product_list/ProductList'
 import { IProduct } from '../marketplace/products/Product';
 
 export function Layout (): React.ReactNode {

@@ -3,7 +3,6 @@ import { Meta, StoryObj} from '@storybook/react';
 import LocalizationSwitcher from './LocalizationSwitcher';
 import { Locale } from './settings';
 import LocalizationProvider from './LocalizationProvider';
-import { LocaleContext } from '../../app/App';
 import { useTranslation } from "react-i18next";
 
 type StoryContext = {
@@ -12,9 +11,7 @@ type StoryContext = {
   };
 };
 
-// Component that shows translated text
 const TranslatedContent = () => {
-  const { locale } = useContext(LocaleContext);
   const {t} = useTranslation();
 
   return (

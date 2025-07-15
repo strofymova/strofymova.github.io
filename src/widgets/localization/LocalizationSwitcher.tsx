@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LocaleContext } from "../../app/App";
 import { Locale } from "./settings";
+import style from "./localization_switcher.module.css";
 
 const LocalizationSwitcher: React.FC = () => {
     const {locale, handleSwitchLocale} = useContext(LocaleContext);
@@ -16,7 +17,7 @@ const LocalizationSwitcher: React.FC = () => {
     }
 
     return (
-        <select value={locale} onChange = {handleChangeLocale}>
+        <select className={style.main} value={locale} onChange = {handleChangeLocale}>
             <option value={Locale.en}>English</option>
             <option value={Locale.ru}>Русский</option>
         </select>

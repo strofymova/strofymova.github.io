@@ -1,6 +1,8 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import clsx from "clsx";
 import style from './basket.module.css'
+import { useTranslation } from "react-i18next";
+import { Theme, ThemeContext } from "../../../app/App";
 
 function getDecrement (count: number) : number {
     return count - 1;
@@ -29,17 +31,28 @@ interface IBasketCounterComponentProps {
 }
 
 function BasketButton({disabled, onClick} : IBasketButtonProps) {
+    const {t} = useTranslation();
+    const {theme} = useContext(ThemeContext);
+    const [styleName, setStyleName] = useState(clsx(style.basket_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
+    useEffect(() => {
+        setStyleName(clsx(style.basket_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
+    }, [theme]);
     return (
-        <button className={clsx(style.basket_btn, style.base_btn)} disabled={disabled} onClick={onClick}>В корзину</button>
+        <button className={styleName} disabled={disabled} onClick={onClick}>{t("widgets.basket.add")}</button>
     )
 }
 
 function BasketCounterComponent({count, onClickIncrement, onClickDecrement} : IBasketCounterComponentProps) {
+    const {theme} = useContext(ThemeContext);
+    const [styleName, setStyleName] = useState(clsx(style.counter_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
+    useEffect(() => {
+        setStyleName(clsx(style.counter_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
+    }, [theme]);
     return (
         <>
-            <button className={clsx(style.counter_btn, style.base_btn)} onClick={onClickDecrement}>-</button>
+            <button className={styleName} onClick={onClickDecrement}>-</button>
             <input className={style.count_input} disabled value={count}></input>
-            <button className={clsx(style.counter_btn, style.base_btn)} onClick={onClickIncrement}>+</button>
+            <button className={styleName} onClick={onClickIncrement}>+</button>
         </>
     )
 }

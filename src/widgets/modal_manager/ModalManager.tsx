@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, ChangeEventHandler, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import styles from './modal_manager.module.css'; 
 import Modal from "../modal/Modal";
 interface IModalManagerProps {

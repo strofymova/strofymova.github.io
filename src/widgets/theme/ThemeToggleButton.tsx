@@ -11,7 +11,6 @@ const ThemeToggleButton: React.FC = () => {
         setStyleName(clsx(styles.main, theme === Theme.light ? styles.light : styles.dark));
     }, [theme]);
 
-    const {locale, handleSwitchLocale} = useContext(LocaleContext);
     const {t} = useTranslation();
     
     return (

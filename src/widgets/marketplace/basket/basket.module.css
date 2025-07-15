@@ -4,20 +4,41 @@
 }
 
 .base_btn {
-    border: solid 1px rgb(10, 100, 78);
-    background-color: rgb(10, 100, 78);
-    color: white;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
     border-radius: 0;
-    &:hover {
-        border: solid 1px white;
+    &.dark {
+        background-color: var(--main-btn-light-color) !important;
+        color: var(--main-dark-backgroun-color);
+        border: solid 1px var(--main-btn-light-color);
+        &:hover {
+            border: solid 1px var(--main-dark-backgroun-color);
+        }
+    }
+    &.light {
+        border: solid 1px var(--main-light-dark-backgroun-color);
+        background-color:  var(--main-light-dark-backgroun-color);
+        color: var(--main-white-color);
+        &:hover {
+            border: solid 1px var( --main-light-background-color);
+        }
     }
     &:disabled {
-        background-color: rgb(121, 182, 177) !important;
-        color: rgb(10, 100, 78);
-        &:hover {
-            border: solid 1px rgb(10, 100, 78);
+        background-color: var(--main-btn-light-color) !important;
+        opacity: 40%;
+        &.dark {
+            color: var(--main-dark-backgroun-color);
+            border: solid 1px var(--main-btn-light-color);
+            &:hover {
+                border: solid 1px var(--main-btn-light-color);
+            }
+        }
+        &.light {
+            color: var(--main-dark-backgroun-color);
+            border: solid 1px var(--main-btn-light-color);
+            &:hover {
+                border: solid 1px var(--main-btn-light-color);
+            }
         }
     }
     
@@ -37,8 +58,10 @@
 
 .count_input {
     width: 60%;
-    height: 80%;
+    height: 90%;
     display: inline-block;
-    padding: 0;
-    text-align: center;
+    padding: 0 0 3px 0;
+    text-align: center; 
+    border: none;
+    background-color: rgb(225, 226, 212);
 }

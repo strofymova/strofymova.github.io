@@ -10,6 +10,17 @@ export const resources = {
             // changeTheme: 'Change theme',
             widgets: {
                 changeTheme: 'Change theme',
+                product: {
+                    card: 'Product card',
+                    cardDetailedTitle: 'Product description detailed',
+                    cost: 'Cost',
+                    name: 'Name',
+                    description: 'Description',
+                    category: 'Category',
+                },
+                basket: {
+                    add: 'Add to basket'
+                }
             }
         }
     },
@@ -22,6 +33,17 @@ export const resources = {
             // changeTheme: 'Сменить тему',
             widgets: {
                 changeTheme: 'Сменить тему',
+                product: {
+                    card: 'Карточка товара',
+                    cardDetailedTitle: 'Подробное описание товара',
+                    cost: 'Стоимость',
+                    name: 'Название',
+                    description: 'Описание',
+                    category: 'Категория',
+                },
+                basket: {
+                    add: 'В корзину'
+                }
             }
         }
     }

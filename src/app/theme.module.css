@@ -1,30 +1,23 @@
 :root {
-  --main-grey-color:  rgb(83, 92, 105);
-  --main-black-color: black;
-  --main-white-color: white;
-  --main-ligth-grey-color:rgb(206, 214, 224);
+  --main-dark-backgroun-color:  rgb(2, 36, 24);
+  --main-light-dark-backgroun-color:  rgb(38, 71, 39);
+  --main-light-dark-backgroun-color:  rgb(38, 71, 39);
+  --main-black-font-color: black;
+  --main-light-background-color: rgb(225, 231, 217);
+  --main-light-border-color:rgb(198, 207, 184);
+  --main-white-color:rgb(241, 250, 227);
+  --main-btn-light-color:rgb(146, 161, 120);
+  --main-btn-dark-color:rgb(241, 250, 227);
 }
-
-/* [data-theme = "0"] {
-    background-color: var(--main-white-color);
-    color: var(--main-black-color);
-    border-color: var(--main-grey-color);
-}
-
-[data-theme = "1"] {
-    background-color: var(--main-grey-color);
-    color: var(--main-white-color);
-    border-color:var(--main-white-color);
-} */
 
 .light {
-    background-color: var(--main-white-color);
-    color: var(--main-black-color);
-    border-color: var(--main-grey-color);
+    background-color: var(--main-light-background-color);
+    color: var(--main-black-font-color);
+    border-color: var(--main-dark-backgroun-color);
 }
 
 .dark {
-    background-color: var(--main-grey-color);
-    color: var(--main-white-color);
-    border-color:var(--main-white-color);
+    background-color: var(--main-dark-backgroun-color);
+    color: var(--main-light-background-color);
+    border-color:var(--main-light-background-color);
 }

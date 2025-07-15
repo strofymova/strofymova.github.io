@@ -1,0 +1,10 @@
+.main {
+    display: inline-flex;
+    margin-top: 10px;
+    > div {
+        margin-right: 10px;
+    }
+    > div:first-of-type {
+        margin-left: 10px;
+    }
+}
