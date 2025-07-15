@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { LocaleContext } from '../../../app/App'
 
 interface ModalProps {
-  visible?: boolean;
-  onClose?: () => void; // Optional for Storybook controls
+  visible: boolean;
+  onClose: () => void;
   children?: React.ReactNode;
 }
 
