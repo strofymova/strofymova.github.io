@@ -5,7 +5,8 @@
 
 .base_btn {
     font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 0;
     &.dark {
         background-color: var(--main-btn-light-color) !important;
@@ -60,7 +61,7 @@
     width: 60%;
     height: 90%;
     display: inline-block;
-    padding: 0 0 3px 0;
+    padding: 1px 0 1px 0;
     text-align: center; 
     border: none;
     background-color: rgb(225, 226, 212);

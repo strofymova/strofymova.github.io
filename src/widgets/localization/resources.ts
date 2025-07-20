@@ -17,6 +17,7 @@ export const resources = {
                     name: 'Name',
                     description: 'Description',
                     category: 'Category',
+                    showMore: 'Show more',
                 },
                 basket: {
                     add: 'Add to basket'
@@ -40,6 +41,7 @@ export const resources = {
                     name: 'Название',
                     description: 'Описание',
                     category: 'Категория',
+                    showMore: 'Показать еще',
                 },
                 basket: {
                     add: 'В корзину'
