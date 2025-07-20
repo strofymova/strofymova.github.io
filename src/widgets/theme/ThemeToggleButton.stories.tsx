@@ -1,7 +1,7 @@
 import React from 'react';
-import { Meta, StoryObj} from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import ThemeToggleButton from './ThemeToggleButton';
-import {Theme} from '../../app/App';
+import { Theme } from '../../app/App';
 import ThemeProvider from './ThemeProvider';
 
 type StoryContext = {
@@ -15,9 +15,9 @@ const meta: Meta<typeof ThemeToggleButton> = {
   component: ThemeToggleButton,
   tags: ['autodocs'],
   decorators: [
-    (Story, context:StoryContext) => (
+    (Story, context: StoryContext) => (
       <ThemeProvider initialTheme={context.args.initialTheme}>
-          <Story />
+        <Story />
       </ThemeProvider>
     ),
   ],
@@ -37,20 +37,19 @@ export default meta;
 type Story = StoryObj<typeof ThemeToggleButton>;
 
 export const Default: Story = {
-   args: {
-    initialTheme: Theme.light
-  }
-  
+  args: {
+    initialTheme: Theme.light,
+  },
 };
 
 export const LightTheme: Story = {
   args: {
-    initialTheme: Theme.light
-  }
+    initialTheme: Theme.light,
+  },
 };
 
 export const DarkTheme: Story = {
   args: {
-    initialTheme: Theme.dark
-  }
+    initialTheme: Theme.dark,
+  },
 };

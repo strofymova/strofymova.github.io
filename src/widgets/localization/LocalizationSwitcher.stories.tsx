@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Meta, StoryObj} from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import LocalizationSwitcher from './LocalizationSwitcher';
 import { Locale } from './settings';
 import LocalizationProvider from './LocalizationProvider';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 type StoryContext = {
   args: {
@@ -12,12 +12,12 @@ type StoryContext = {
 };
 
 const TranslatedContent = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div style={{ marginTop: '20px', padding: '20px', border: '1px solid #ddd', borderRadius: '4px' }}>
-      <h3>{t("welcome")}</h3>
-      <p>{t("description")}</p>
+      <h3>{t('welcome')}</h3>
+      <p>{t('description')}</p>
     </div>
   );
 };
@@ -27,10 +27,10 @@ const meta: Meta<typeof LocalizationSwitcher> = {
   component: LocalizationSwitcher,
   tags: ['autodocs'],
   decorators: [
-    (Story, context:StoryContext) => (
+    (Story, context: StoryContext) => (
       <LocalizationProvider initialLocale={context.args.initialLocale}>
-            <Story/>
-            <TranslatedContent/>
+        <Story />
+        <TranslatedContent />
       </LocalizationProvider>
     ),
   ],
@@ -50,15 +50,13 @@ export default meta;
 type Story = StoryObj<typeof LocalizationSwitcher>;
 
 export const Default: Story = {
-   args: {
-    initialLocale: Locale.en
-  }
-  
+  args: {
+    initialLocale: Locale.en,
+  },
 };
 
 export const RuInitialValue: Story = {
   args: {
-    initialLocale: Locale.ru
-  }
+    initialLocale: Locale.ru,
+  },
 };
-

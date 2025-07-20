@@ -20,9 +20,9 @@ const transformRegexp =
   /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
 
 export type Coordinate = {
-  x: number,
-  y: number
-}
+  x: number;
+  y: number;
+};
 
 export const getTransformFromCss = (transformCssString: string): Coordinate => {
   const data: RegExpMatchArray | null = transformCssString.match(transformRegexp);
@@ -30,8 +30,8 @@ export const getTransformFromCss = (transformCssString: string): Coordinate => {
 
   const coordinate: Coordinate = {
     x: parseInt(data[6], 10),
-    y: parseInt(data[8], 10)
-  }
+    y: parseInt(data[8], 10),
+  };
   return coordinate;
 };
 
@@ -62,9 +62,9 @@ export const hex2rgb = (color: string): [number, number, number] => {
 };
 
 export type ArrayItem = {
-  value: number,
-  index: number
-}
+  value: number;
+  index: number;
+};
 export const getNumberedArray = (arr: number[]): ArrayItem[] =>
   arr.map((value: number, index: number) => ({ value, index }));
 export const toStringArray = (arr: number[]): string[] =>

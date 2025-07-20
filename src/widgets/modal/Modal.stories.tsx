@@ -8,22 +8,22 @@ const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
   decorators: [
-      (Story, context:StoryContext) => (
-        <LocalizationProvider initialLocale={Locale.ru}>
-              <Story/>
-        </LocalizationProvider>
-      ),
-    ],
+    (Story, context: StoryContext) => (
+      <LocalizationProvider initialLocale={Locale.ru}>
+        <Story />
+      </LocalizationProvider>
+    ),
+  ],
   argTypes: {
     visible: {
       control: 'boolean',
-      defaultValue: true
+      defaultValue: true,
     },
     children: {
       control: 'text',
-      defaultValue: 'Modal content goes here'
-    }
-  }
+      defaultValue: 'Modal content goes here',
+    },
+  },
 };
 
 export default meta;
@@ -33,8 +33,8 @@ type Story = StoryObj<typeof Modal>;
 export const Default: Story = {
   args: {
     visible: true,
-    children: 'Содержимое модального окна'
-  }
+    children: 'Содержимое модального окна',
+  },
 };
 
 export const WithHTMLContent: Story = {
@@ -46,6 +46,6 @@ export const WithHTMLContent: Story = {
         <p>Это HTML контент модального окна</p>
         <button>Это просто кнопка</button>
       </div>
-    )
-  }
+    ),
+  },
 };

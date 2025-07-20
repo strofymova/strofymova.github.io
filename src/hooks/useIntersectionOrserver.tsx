@@ -1,21 +1,21 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect } from 'react';
 
 export const useIntersectionObserver = (
-    targetRef: RefObject<Element>,
-    callback: (entry: IntersectionObserverEntry) => void,
-    options?: IntersectionObserverInit
+  targetRef: RefObject<Element>,
+  callback: (entry: IntersectionObserverEntry) => void,
+  options?: IntersectionObserverInit
 ) => {
-    useEffect(() => {
-        if (!targetRef.current || !callback) return;
+  useEffect(() => {
+    if (!targetRef.current || !callback) return;
 
-        const observer = new IntersectionObserver((entries) => {
-            callback(entries[0]);
-        }, options);
+    const observer = new IntersectionObserver((entries) => {
+      callback(entries[0]);
+    }, options);
 
-        observer.observe(targetRef.current);
+    observer.observe(targetRef.current);
 
-        return () => {
-            observer.unobserve;
-        };
-    }, [targetRef, callback, options]);
+    return () => {
+      observer.unobserve;
+    };
+  }, [targetRef, callback, options]);
 };
