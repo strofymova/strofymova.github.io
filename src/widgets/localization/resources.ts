@@ -7,6 +7,7 @@ export const resources = {
             welcome: 'Welcome to my application!',
             description: 'This component demonstrates language switching.',
             close: 'Close',
+            open: 'Open',
             // changeTheme: 'Change theme',
             widgets: {
                 changeTheme: 'Change theme',
@@ -31,6 +32,7 @@ export const resources = {
             welcome: 'Добро пожаловать в моё приложение!',
             description: 'Этот компонент демонстрирует переключение языка.',
             close: 'Закрыть',
+            open: 'Открыть',
             // changeTheme: 'Сменить тему',
             widgets: {
                 changeTheme: 'Сменить тему',
