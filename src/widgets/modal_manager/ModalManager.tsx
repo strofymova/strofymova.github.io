@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './modal_manager.module.css';
 import Modal from '../modal/Modal';
 import { useTranslation } from 'react-i18next';
-import { useModalManager } from '../../hooks/useModalShowing';
+import { useModalManager } from '../../hooks/useModalManager';
 
 interface IModalManagerProps {
   initialText?: string;
