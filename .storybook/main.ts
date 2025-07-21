@@ -19,6 +19,7 @@ const config = {
   docs: {},
 
   typescript: {
+    check: true,
     reactDocgen: "react-docgen-typescript"
   }
 };
