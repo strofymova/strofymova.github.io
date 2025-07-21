@@ -1,20 +1,18 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Header from '../header/Header';
 import styles from './layout.module.css';
-import { Theme, ThemeContext } from '../../app/App';
-import { clsx } from 'clsx';
-import { ProductList, IProductList } from '../product_list/ProductList';
+import { ProductList } from '../product_list/ProductList';
 import { IProduct } from '../marketplace/products/Product';
 import { getIProduct, getIProducts } from '../../utility/GeneratorUtil';
 import { useTranslation } from 'react-i18next';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 export function Layout(): React.ReactNode {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(clsx(styles.main, theme === Theme.light ? styles.dark : styles.light));
-  useEffect(() => {
-    setStyleName(clsx(styles.main, theme === Theme.light ? styles.dark : styles.light));
-  }, [theme]);
+  const styleName = useThemeStyles(styles.main, {
+    light: styles.light,
+    dark: styles.dark,
+  });
 
   const [products, setProducts] = useState<IProduct[]>(getIProducts(12));
 

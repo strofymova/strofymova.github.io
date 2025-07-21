@@ -3,15 +3,13 @@ import Logo from '../logo/Logo';
 import styles from './header.module.css';
 import ThemeToggleButton from '../theme/ThemeToggleButton';
 import LocalizationSwitcher from '../localization/LocalizationSwitcher';
-import { clsx } from 'clsx';
-import { Theme, ThemeContext } from '../../app/App';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 export function Header(): React.ReactNode {
-  const { theme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(clsx(styles.main, theme === Theme.light ? styles.dark : styles.light));
-  useEffect(() => {
-    setStyleName(clsx(styles.main, theme === Theme.light ? styles.dark : styles.light));
-  }, [theme]);
+  const styleName = useThemeStyles(styles.main, {
+    light: styles.light,
+    dark: styles.dark,
+  });
 
   return (
     <div className={styleName}>

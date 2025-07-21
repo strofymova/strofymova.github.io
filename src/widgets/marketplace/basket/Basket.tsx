@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { clsx } from 'clsx';
 import style from './basket.module.css';
 import { useTranslation } from 'react-i18next';
-import { Theme, ThemeContext } from '../../../app/App';
+import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
 function getDecrement(count: number): number {
   return count - 1;
@@ -32,13 +32,10 @@ interface IBasketCounterComponentProps {
 
 function BasketButton({ disabled, onClick }: IBasketButtonProps) {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(
-    clsx(style.basket_btn, style.base_btn, theme === Theme.light ? style.dark : style.light)
-  );
-  useEffect(() => {
-    setStyleName(clsx(style.basket_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
-  }, [theme]);
+  const styleName = useThemeStyles(clsx(style.basket_btn, style.base_btn), {
+    light: style.light,
+    dark: style.dark,
+  });
   return (
     <button className={styleName} disabled={disabled} onClick={onClick}>
       {t('widgets.basket.add')}
@@ -47,13 +44,10 @@ function BasketButton({ disabled, onClick }: IBasketButtonProps) {
 }
 
 function BasketCounterComponent({ count, onClickIncrement, onClickDecrement }: IBasketCounterComponentProps) {
-  const { theme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(
-    clsx(style.counter_btn, style.base_btn, theme === Theme.light ? style.dark : style.light)
-  );
-  useEffect(() => {
-    setStyleName(clsx(style.counter_btn, style.base_btn, theme === Theme.light ? style.dark : style.light));
-  }, [theme]);
+  const styleName = useThemeStyles(clsx(style.counter_btn, style.base_btn), {
+    light: style.light,
+    dark: style.dark,
+  });
   return (
     <>
       <button className={styleName} onClick={onClickDecrement}>

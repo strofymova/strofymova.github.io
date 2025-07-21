@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './theme_toggle_button.module.css';
-import { clsx } from 'clsx';
-import { Theme, ThemeContext } from '../../app/App';
+import { ThemeContext } from '../../app/App';
 import { useTranslation } from 'react-i18next';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 const ThemeToggleButton: React.FC = () => {
-  const { theme, handleSwitchTheme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(clsx(styles.main, theme === Theme.light ? styles.dark : styles.light));
-  useEffect(() => {
-    setStyleName(clsx(styles.main, theme === Theme.light ? styles.light : styles.dark));
-  }, [theme]);
+  const { handleSwitchTheme } = useContext(ThemeContext);
+  const styleName = useThemeStyles(styles.main, {
+    light: styles.light,
+    dark: styles.dark,
+  });
 
   const { t } = useTranslation();
 

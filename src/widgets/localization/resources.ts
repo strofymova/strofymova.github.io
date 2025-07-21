@@ -8,7 +8,6 @@ export const resources = {
       description: 'This component demonstrates language switching.',
       close: 'Close',
       open: 'Open',
-      // changeTheme: 'Change theme',
       widgets: {
         changeTheme: 'Change theme',
         product: {
@@ -33,7 +32,6 @@ export const resources = {
       description: 'Этот компонент демонстрирует переключение языка.',
       close: 'Закрыть',
       open: 'Открыть',
-      // changeTheme: 'Сменить тему',
       widgets: {
         changeTheme: 'Сменить тему',
         product: {

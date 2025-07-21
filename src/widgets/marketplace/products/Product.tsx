@@ -4,8 +4,7 @@ import Basket from '../basket/Basket';
 import unknowImageUrl from '../../../stories/assets/custom-unknow-product.svg';
 import ProductItem from './ProductItem';
 import { useTranslation } from 'react-i18next';
-import { Theme, ThemeContext } from '../../../app/App';
-import { clsx } from 'clsx';
+import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
 export interface IProduct {
   price: number;
@@ -17,11 +16,10 @@ export interface IProduct {
 
 export const Product = forwardRef<HTMLDivElement, IProduct>(({ price, imageUrl, name, description, disable }, ref) => {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext);
-  const [styleName, setStyleName] = useState(clsx(style.main, theme === Theme.light ? style.dark : style.light));
-  useEffect(() => {
-    setStyleName(clsx(style.main, theme === Theme.light ? style.dark : style.light));
-  }, [theme]);
+  const styleName = useThemeStyles(style.main, {
+    light: style.light,
+    dark: style.dark,
+  });
 
   return (
     <div className={styleName} ref={ref}>
