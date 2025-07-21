@@ -3,12 +3,10 @@ const config = {
 
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "@storybook/preset-scss",
-    "@storybook/addon-mdx-gfm",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook"
+    "@chromatic-com/storybook",
+    "@storybook/addon-docs"
   ],
 
   framework: {
@@ -19,7 +17,6 @@ const config = {
   docs: {},
 
   typescript: {
-    check: true,
     reactDocgen: "react-docgen-typescript"
   }
 };

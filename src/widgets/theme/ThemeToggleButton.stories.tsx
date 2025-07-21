@@ -1,8 +1,8 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
 import ThemeToggleButton from './ThemeToggleButton';
 import { Theme } from '../../app/App';
 import ThemeProvider from './ThemeProvider';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 type StoryContext = {
   args: {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { within, userEvent } from '@storybook/testing-library';
 
 import { Page } from './Page';

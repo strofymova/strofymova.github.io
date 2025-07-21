@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styles from './theme_toggle_button.module.css';
-import clsx from 'clsx';
-import { LocaleContext, Theme, ThemeContext } from '../../app/App';
+import { clsx } from 'clsx';
+import { Theme, ThemeContext } from '../../app/App';
 import { useTranslation } from 'react-i18next';
 
 const ThemeToggleButton: React.FC = () => {

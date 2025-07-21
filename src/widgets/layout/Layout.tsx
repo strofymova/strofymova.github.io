@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Header from '../header/Header';
 import styles from './layout.module.css';
 import { Theme, ThemeContext } from '../../app/App';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { ProductList, IProductList } from '../product_list/ProductList';
 import { IProduct } from '../marketplace/products/Product';
 import { getIProduct, getIProducts } from '../../utility/GeneratorUtil';

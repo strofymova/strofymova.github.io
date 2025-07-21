@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import style from './product_list.module.css';
 import { IProduct, Product } from '../marketplace/products/Product';
 import { generateUUID, getIProduct } from '../../utility/GeneratorUtil';

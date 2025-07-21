@@ -16,7 +16,7 @@ export const LocalizationProvider: React.FC<ILocalizationProviderProps> = ({ chi
   };
   useEffect(() => {
     i18n.changeLanguage(locale);
-  }, [locale]);
+  }, [locale, i18n]);
 
   useEffect(() => {
     setLocale(initialLocale);

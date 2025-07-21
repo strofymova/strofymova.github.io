@@ -3,7 +3,7 @@ import Logo from '../logo/Logo';
 import styles from './header.module.css';
 import ThemeToggleButton from '../theme/ThemeToggleButton';
 import LocalizationSwitcher from '../localization/LocalizationSwitcher';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { Theme, ThemeContext } from '../../app/App';
 
 export function Header(): React.ReactNode {

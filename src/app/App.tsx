@@ -35,7 +35,7 @@ function App() {
   };
   useEffect(() => {
     i18n.changeLanguage(locale);
-  }, [locale]);
+  }, [locale, i18n]);
 
   return (
     <LocaleContext.Provider value={{ locale, handleSwitchLocale }}>

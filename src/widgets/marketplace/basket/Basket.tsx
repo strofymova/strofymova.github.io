@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import style from './basket.module.css';
 import { useTranslation } from 'react-i18next';
 import { Theme, ThemeContext } from '../../../app/App';

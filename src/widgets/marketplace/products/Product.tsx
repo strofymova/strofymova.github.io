@@ -5,7 +5,7 @@ import unknowImageUrl from '../../../stories/assets/custom-unknow-product.svg';
 import ProductItem from './ProductItem';
 import { useTranslation } from 'react-i18next';
 import { Theme, ThemeContext } from '../../../app/App';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 export interface IProduct {
   price: number;

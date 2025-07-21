@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import LocalizationSwitcher from './LocalizationSwitcher';
 import { Locale } from './settings';
 import LocalizationProvider from './LocalizationProvider';

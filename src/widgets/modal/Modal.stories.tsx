@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryContext, StoryObj } from '@storybook/react';
+import type { Meta, StoryContext, StoryObj } from '@storybook/react-webpack5';
 import Modal from './Modal';
 import LocalizationProvider from '../localization/LocalizationProvider';
 import { Locale } from '../localization/settings';

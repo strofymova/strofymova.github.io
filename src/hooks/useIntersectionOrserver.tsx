@@ -6,16 +6,19 @@ export const useIntersectionObserver = (
   options?: IntersectionObserverInit
 ) => {
   useEffect(() => {
-    if (!targetRef.current || !callback) return;
+    const currentTarget = targetRef.current;
+
+    if (!currentTarget || !callback) return;
 
     const observer = new IntersectionObserver((entries) => {
       callback(entries[0]);
     }, options);
 
-    observer.observe(targetRef.current);
+    observer.observe(currentTarget);
 
     return () => {
-      observer.unobserve;
+      observer.unobserve(currentTarget);
+      observer.disconnect();
     };
   }, [targetRef, callback, options]);
 };
