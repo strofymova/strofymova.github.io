@@ -1,6 +1,6 @@
 import React from 'react';
 import ThemeToggleButton from './ThemeToggleButton';
-import { Theme } from '../../app/App';
+import { Theme } from '../../app/AppContainer';
 import ThemeProvider from './ThemeProvider';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 

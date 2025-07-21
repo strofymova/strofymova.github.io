@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './theme_toggle_button.module.css';
-import { ThemeContext } from '../../app/App';
+import { ThemeContext } from '../../app/AppContainer';
 import { useTranslation } from 'react-i18next';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
 

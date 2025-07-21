@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { clsx } from 'clsx';
-import { Theme, ThemeContext } from '../app/App';
+import { Theme, ThemeContext } from '../app/AppContainer';
 
 export const useThemeStyles = (
   baseStyle: string,

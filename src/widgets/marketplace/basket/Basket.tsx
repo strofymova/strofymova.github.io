@@ -1,16 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { clsx } from 'clsx';
 import style from './basket.module.css';
 import { useTranslation } from 'react-i18next';
 import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
-function getDecrement(count: number): number {
-  return count - 1;
-}
-
-function getIncrement(count: number): number {
-  return count + 1;
-}
+const getDecrement = (count: number) => Math.max(0, count - 1);
+const getIncrement = (count: number) => count + 1;
 
 interface IBasketProps {
   initCount: number;
@@ -19,7 +14,6 @@ interface IBasketProps {
 }
 
 interface IBasketButtonProps {
-  count: number;
   disabled: boolean;
   onClick(): void;
 }
@@ -53,7 +47,7 @@ function BasketCounterComponent({ count, onClickIncrement, onClickDecrement }: I
       <button className={styleName} onClick={onClickDecrement}>
         -
       </button>
-      <input className={style.count_input} disabled value={count}></input>
+      <input className={style.count_input} disabled value={count} />
       <button className={styleName} onClick={onClickIncrement}>
         +
       </button>
@@ -63,18 +57,18 @@ function BasketCounterComponent({ count, onClickIncrement, onClickDecrement }: I
 
 export function Basket({ initCount, disabled, className }: IBasketProps) {
   const [count, setCount] = useState(initCount);
-  function onClickIncrement(): void {
-    setCount((prev) => getIncrement(prev));
-  }
-  function onClickDecrement(): void {
-    setCount((prev) => getDecrement(prev));
-  }
+  const handleIncrement = useCallback(() => {
+    setCount((prevCount) => getIncrement(prevCount));
+  }, []);
+  const handleDecrement = useCallback(() => {
+    setCount((prevCount) => getDecrement(prevCount));
+  }, []);
   return (
     <div className={clsx(className, style.main)}>
       {count === 0 ? (
-        <BasketButton count={count} onClick={onClickIncrement} disabled={disabled} />
+        <BasketButton onClick={handleIncrement} disabled={disabled} />
       ) : (
-        <BasketCounterComponent count={count} onClickIncrement={onClickIncrement} onClickDecrement={onClickDecrement} />
+        <BasketCounterComponent count={count} onClickIncrement={handleIncrement} onClickDecrement={handleDecrement} />
       )}
     </div>
   );

@@ -29,7 +29,7 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(({ price, imageUrl, 
         <ProductItem title={t('widgets.product.cost')} value={price} />
         <ProductItem title={t('widgets.product.name')} value={name} />
         <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
-        <Basket initCount={0} disabled={disable && true}></Basket>
+        <Basket initCount={0} disabled={disable && true} />
       </div>
     </div>
   );
