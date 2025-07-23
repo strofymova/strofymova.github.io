@@ -6,15 +6,6 @@
     min-height: 100vh;
 }
 
-.contentContainer {
-    width: 100%;
-    display: flex;
-
-    & > div:first-child, & > div:nth-last-child(2) {
-        flex: 1 1 auto; 
-    }
-}
-
 .showMoreBtn {
     font-weight: bold;
     border-radius: 0;
@@ -30,6 +21,14 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 98%;
+}
+
+.productsSmall {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 77%;
 }
 
 .light {

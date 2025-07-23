@@ -1,8 +1,8 @@
 import React from 'react';
-import LayoutContainer from '../widgets/layout/LayoutContainer';
+import Layout from '../widgets/layout/Layout';
 
 const AppComponent: React.FC = () => {
-  return <LayoutContainer />;
+  return <Layout />;
 };
 
 export default AppComponent;

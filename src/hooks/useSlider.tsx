@@ -18,7 +18,7 @@ export const useSlider = ({ initialValue, minLimit, maxLimit, constrainValue, on
 
   const getSliderHandler = useCallback(
     (otherValue: number) => {
-      var rect: DOMRect;
+      let rect: DOMRect;
 
       const move = (e: MouseEvent | TouchEvent) => {
         const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0]?.clientX;
@@ -56,7 +56,7 @@ export const useSlider = ({ initialValue, minLimit, maxLimit, constrainValue, on
         setupEvents();
       };
     },
-    [initialValue, minLimit, maxLimit, constrainValue, onChange]
+    [minLimit, maxLimit, constrainValue, onChange]
   );
 
   const constrainedValue = getValueInRange(initialValue, minLimit, maxLimit);

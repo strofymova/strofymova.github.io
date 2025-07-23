@@ -1,7 +1,6 @@
 import React from 'react';
 import { FilterRangeComponent } from './FilterRangeComponent';
 import { useSlider } from '../../hooks/useSlider';
-import { getPercentagePosition } from '../../utility/RangeUtil';
 
 export type FilterRangeContainerProps = {
   className?: string;
@@ -22,7 +21,6 @@ export function FilterRangeContainer({
   min,
   max,
 }: FilterRangeContainerProps) {
-
   const {
     position: minPosition,
     constrainedValue: constrainedMin,

@@ -3,7 +3,11 @@ import LayoutComponent from './LayoutComponent';
 import { IProduct } from '../marketplace/products/Product';
 import { getIProducts } from '../../utility/GeneratorUtil';
 
-const LayoutContainer: React.FC = () => {
+interface ILayoutContainerProps {
+  infinityScroll?: boolean;
+}
+
+const LayoutContainer: React.FC<ILayoutContainerProps> = ({ infinityScroll }: ILayoutContainerProps) => {
   const [products, setProducts] = useState<IProduct[]>(getIProducts(8));
 
   const loadProducts = useCallback((count: number) => {
@@ -11,7 +15,12 @@ const LayoutContainer: React.FC = () => {
   }, []);
 
   return (
-    <LayoutComponent products={products} onShowMore={() => loadProducts(1)} onIntersection={() => loadProducts(4)} />
+    <LayoutComponent
+      products={products}
+      onShowMore={() => loadProducts(1)}
+      onIntersection={() => loadProducts(4)}
+      infinityScroll={infinityScroll}
+    />
   );
 };
 

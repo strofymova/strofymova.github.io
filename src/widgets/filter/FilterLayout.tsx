@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, forwardRef } from 'react';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
 import styles from './filter_layout.module.css';
 import { clsx } from 'clsx';
@@ -8,8 +8,14 @@ interface IFilterState {
   visibility: boolean;
 }
 
-export function FilterLayout(): React.ReactNode {
-  const [state, setState] = useState<IFilterState>({ visibility: false });
+interface IFilterLayoutProps {
+  initialVisibility?: boolean;
+}
+
+const FilterLayout = forwardRef<HTMLDivElement, IFilterLayoutProps>(({ initialVisibility = false }, ref) => {
+  const [state, setState] = useState<IFilterState>({
+    visibility: initialVisibility,
+  });
   const mainStyle = useThemeStyles(styles.main, {
     light: styles.light,
     dark: styles.dark,
@@ -19,14 +25,14 @@ export function FilterLayout(): React.ReactNode {
 
   useEffect(() => {
     setStyleName(state.visibility ? styles.show : styles.hide);
-  }, [state]);
+  }, [state.visibility]);
 
   const handleOnHoverEnter = () => {
-    setState({ visibility: true });
+    setState((prev) => ({ ...prev, visibility: true }));
   };
 
   const handleOnHoverLeave = () => {
-    setState({ visibility: false });
+    setState((prev) => ({ ...prev, visibility: false }));
   };
 
   const [minValuePrice, setMinValuePrice] = useState(0);
@@ -41,7 +47,12 @@ export function FilterLayout(): React.ReactNode {
   };
 
   return (
-    <div className={clsx(mainStyle, styleName)} onMouseEnter={handleOnHoverEnter} onMouseLeave={handleOnHoverLeave}>
+    <div
+      ref={ref}
+      className={clsx(mainStyle, styleName)}
+      onMouseEnter={handleOnHoverEnter}
+      onMouseLeave={handleOnHoverLeave}
+    >
       {state.visibility && (
         <FilterRangeContainer
           className="custom-range-filter"
@@ -55,5 +66,6 @@ export function FilterLayout(): React.ReactNode {
       )}
     </div>
   );
-}
+});
+FilterLayout.displayName = 'FilterLayout';
 export default FilterLayout;
