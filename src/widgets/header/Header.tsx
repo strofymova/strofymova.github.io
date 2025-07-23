@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import Logo from '../logo/Logo';
 import styles from './header.module.css';
 import ThemeToggleButton from '../theme/ThemeToggleButton';

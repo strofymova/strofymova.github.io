@@ -6,6 +6,15 @@
     min-height: 100vh;
 }
 
+.contentContainer {
+    width: 100%;
+    display: flex;
+
+    & > div:first-child, & > div:nth-last-child(2) {
+        flex: 1 1 auto; 
+    }
+}
+
 .showMoreBtn {
     font-weight: bold;
     border-radius: 0;

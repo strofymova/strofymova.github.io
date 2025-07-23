@@ -1,4 +1,4 @@
-import React, { forwardRef, MutableRefObject, RefObject, useContext, useEffect, useState } from 'react';
+import React, { forwardRef} from 'react';
 import style from './product.module.css';
 import Basket from '../basket/Basket';
 import unknowImageUrl from '../../../stories/assets/custom-unknow-product.svg';

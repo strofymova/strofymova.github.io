@@ -5,6 +5,7 @@ import Header from '../header/Header';
 import { ProductList } from '../product_list/ProductList';
 import styles from './layout.module.css';
 import { IProduct } from '../marketplace/products/Product';
+import FilterLayout from '../filter/FilterLayout';
 
 interface ILayoutComponentProps {
   products: IProduct[];
@@ -22,7 +23,10 @@ const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore
   return (
     <div className={styleName}>
       <Header />
-      <ProductList products={products} className={styles.products} onIntersection={onIntersection} />
+      <div className={styles.contentContainer}>
+        <ProductList products={products} className={styles.products} onIntersection={onIntersection} />
+        <FilterLayout></FilterLayout>
+      </div>
       <button className={styles.showMoreBtn} onClick={onShowMore}>
         {t('widgets.product.showMore')}
       </button>

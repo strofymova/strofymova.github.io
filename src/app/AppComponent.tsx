@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutContainer from 'src/widgets/layout/LayoutContainer';
+import LayoutContainer from '../widgets/layout/LayoutContainer';
 
 const AppComponent: React.FC = () => {
   return <LayoutContainer />;

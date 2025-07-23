@@ -1,0 +1,37 @@
+.main {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 120px;
+    height: 90%;
+    max-height: 87vh;
+    border: 1px solid;
+    border-right: 0px;
+    border-radius: 10px 0  0 10px;
+    z-index: 10;
+}
+
+.show {
+    min-width: 200px; 
+    width: 20%;
+    transition: 0.3s;
+}
+
+.hide {
+    width: 1%;
+    transition: 0.3s;
+}
+
+.light {
+    border-color: var(--main-dark-backgroun-color);
+    box-shadow: 1px 3px 20px 0 var(--main-dark-backgroun-color);
+    background-color: var(--main-light-background-color);
+    color: var(--main-dark-backgroun-color);
+}
+
+.dark {
+    border-color: var(--main-light-border-color);
+    box-shadow: 1px 3px 20px 0 var(--main-light-border-color);
+    background-color: var(--main-dark-backgroun-color);
+    color: var(--main-light-border-color);
+}
