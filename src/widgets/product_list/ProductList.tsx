@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { clsx } from 'clsx';
 import style from './product_list.module.css';
-import { IProduct, Product } from '../marketplace/products/Product';
-import { generateUUID } from '../../utility/GeneratorUtil';
+import { IProduct, Product } from '../marketplace/products/Product'
 import { useIntersectionObserver } from '../../hooks/useIntersectionOrserver';
 
 export interface IProductList {
@@ -34,7 +33,7 @@ export function ProductList({
     <div className={clsx(style.main, className)}>
       {products.map((product, index) => {
         const isLast = index === products.length - 1;
-        return <Product ref={infinityScroll && isLast ? lastProductRef : null} key={generateUUID()} {...product} />;
+        return <Product ref={infinityScroll && isLast ? lastProductRef : null} key={product.id} {...product} />;
       })}
     </div>
   );
