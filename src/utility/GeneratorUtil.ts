@@ -20,6 +20,7 @@ export const getIProducts = (count: number): IProduct[] => {
 export const getIProduct = (): IProduct => {
   const { id, name, photo, desc, price, category } = createRandomProduct(new Date().toISOString());
   return {
+    id: id,
     price: price,
     imageUrl: null,
     name: name,

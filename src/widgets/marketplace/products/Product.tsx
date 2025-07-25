@@ -8,6 +8,7 @@ import { Theme, ThemeContext } from '../../../app/App';
 import { clsx } from 'clsx';
 
 export interface IProduct {
+  id: string;
   price: number;
   imageUrl: string | null;
   name: string;
@@ -15,7 +16,7 @@ export interface IProduct {
   disable?: boolean;
 }
 
-export const Product = forwardRef<HTMLDivElement, IProduct>(({ price, imageUrl, name, description, disable }, ref) => {
+export const Product = forwardRef<HTMLDivElement, IProduct>(({id, price, imageUrl, name, description, disable }:IProduct, ref) => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const [styleName, setStyleName] = useState(clsx(style.main, theme === Theme.light ? style.dark : style.light));

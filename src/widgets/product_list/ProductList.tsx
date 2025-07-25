@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import { clsx } from 'clsx';
 import style from './product_list.module.css';
 import { IProduct, Product } from '../marketplace/products/Product';
-import { generateUUID, getIProduct } from '../../utility/GeneratorUtil';
 import { useIntersectionObserver } from '../../hooks/useIntersectionOrserver';
 
 export interface IProductList {
@@ -31,12 +30,13 @@ export function ProductList({ products, className, onIntersection }: IProductLis
         return (
           <Product
             ref={isLast ? lastProductRef : null}
+            id={product.id}
             description={product.description}
             imageUrl={product.imageUrl}
             name={product.name}
             price={product.price}
             disable={product.disable}
-            key={generateUUID()}
+            key={product.id}
           />
         );
       })}
