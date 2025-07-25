@@ -4,8 +4,7 @@ import Basket from '../basket/Basket';
 import unknowImageUrl from '../../../stories/assets/custom-unknow-product.svg';
 import ProductItem from './ProductItem';
 import { useTranslation } from 'react-i18next';
-import { Theme, ThemeContext } from '../../../app/App';
-import { clsx } from 'clsx';
+import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
 export interface IProduct {
   id: string;
@@ -16,29 +15,26 @@ export interface IProduct {
   disable?: boolean;
 }
 
-export const Product = forwardRef<HTMLDivElement, IProduct>(
-  ({ id, price, imageUrl, name, description, disable }: IProduct, ref) => {
-    const { t } = useTranslation();
-    const { theme } = useContext(ThemeContext);
-    const [styleName, setStyleName] = useState(clsx(style.main, theme === Theme.light ? style.dark : style.light));
-    useEffect(() => {
-      setStyleName(clsx(style.main, theme === Theme.light ? style.dark : style.light));
-    }, [theme]);
+export const Product = forwardRef<HTMLDivElement, IProduct>(({id, price, imageUrl, name, description, disable }: IProduct, ref) => {
+  const { t } = useTranslation();
+  const styleName = useThemeStyles(style.main, {
+    light: style.light,
+    dark: style.dark,
+  });
 
-    return (
-      <div className={styleName} ref={ref}>
-        <div className={style.title}>{t('widgets.product.card')}</div>
-        <img className={style.img} src={imageUrl === null ? unknowImageUrl : imageUrl} />
-        <div className={style.info}>
-          <ProductItem title={t('widgets.product.cost')} value={price} />
-          <ProductItem title={t('widgets.product.name')} value={name} />
-          <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
-          <Basket initCount={0} disabled={disable && true}></Basket>
-        </div>
+  return (
+    <div className={styleName} ref={ref}>
+      <div className={style.title}>{t('widgets.product.card')}</div>
+      <img className={style.img} src={imageUrl === null ? unknowImageUrl : imageUrl} />
+      <div className={style.info}>
+        <ProductItem title={t('widgets.product.cost')} value={price} />
+        <ProductItem title={t('widgets.product.name')} value={name} />
+        <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
+        <Basket initCount={0} disabled={disable && true} />
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
 
 Product.displayName = 'Product';
 export default Product;

@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { Theme, ThemeContext } from '../../app/App';
+import { Theme, ThemeContext } from '../../app/AppContainer';
 import styles from '../../app/theme.module.css';
 
 interface IThemeProviderProps {

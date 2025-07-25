@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { LocaleContext } from '../../app/App';
+import { LocaleContext } from '../../app/AppContainer';
 import { Locale } from './settings';
 import { useTranslation } from 'react-i18next';
 

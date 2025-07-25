@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { LocaleContext } from '../../app/App';
+import { LocaleContext } from '../../app/AppContainer';
 import { Locale } from './settings';
 import style from './localization_switcher.module.css';
 

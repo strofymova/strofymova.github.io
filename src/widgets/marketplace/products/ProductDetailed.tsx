@@ -13,7 +13,6 @@ export interface IProductDetail extends IProduct {
 export function ProductDetailed({ category, description, imageUrl, name, price, disable }: IProductDetail) {
   const { t } = useTranslation();
   const initCount = 0;
-  const basketBtnDisable = disable && true;
   const currentImageUrl = imageUrl === null ? String(unknowImageUrl) : imageUrl;
   return (
     <div className={style.main}>
@@ -24,7 +23,7 @@ export function ProductDetailed({ category, description, imageUrl, name, price, 
         <ProductItem className={style.category} title={t('widgets.product.category')} value={category} />
         <ProductItem className={style.name} title={t('widgets.product.name')} value={name} />
         <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
-        <Basket className={style.basket_btn} initCount={initCount} disabled={basketBtnDisable}></Basket>
+        <Basket className={style.basket_btn} initCount={initCount} disabled={disable} />
       </div>
     </div>
   );
