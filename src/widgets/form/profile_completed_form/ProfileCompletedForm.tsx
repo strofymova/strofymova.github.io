@@ -6,16 +6,16 @@ import { useMutation, useQuery } from '@apollo/client';
 import { Button, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { profileActions, profileSelectors } from 'src/app/store/profile';
+import { profileActions, profileSelectors } from '../../../app/store/profile';
 
 import { UPDATE_PROFILE, UpdateProfileResponse, UpdateProfileVars } from './connection';
 import s from './profile_completed_form.module.css';
 import { Title } from '../title';
 import { ProfileForm, ProfileFormErrors, ProfileFormValues } from '../profile_form';
-import { isNotDefinedString } from 'src/utility/validation';
-import { createErrorHandlers } from 'src/utility/createErrorHandlers';
-import { GET_PROFILE, GetProfileResponse } from 'src/app/store/sagas/token/connections';
-import { tokenActions } from 'src/app/store/token';
+import { isNotDefinedString } from '../../../utility/validation';
+import { createErrorHandlers } from '../../../utility/createErrorHandlers';
+import { GET_PROFILE, GetProfileResponse } from '../../../app/store/sagas/token/connections';
+import { tokenActions } from '../../../app/store/token';
 
 export type ProfileCompletedFormProps = {
   className?: string;

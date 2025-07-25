@@ -1,8 +1,8 @@
 import type { ErrorResponse } from '@apollo/client/link/error';
 import { onError } from '@apollo/client/link/error';
 import type { GraphQLFormattedError } from 'graphql';
-import { store } from 'src/app/store';
-import { tokenActions } from 'src/app/store/token';
+import { store } from '../../app/store';
+import { tokenActions } from '../../app/store/token';
 import { NOT_AUTHORIZED_CODE } from './config';
 
 export type Extensions = {

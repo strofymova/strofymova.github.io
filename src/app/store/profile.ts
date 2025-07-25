@@ -1,7 +1,7 @@
 import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './index';
-import { Profile } from 'src/shared/server.types';
+import { Profile } from '../../shared/server.types';
 
 export const profileSlice = createSlice<
   Profile,

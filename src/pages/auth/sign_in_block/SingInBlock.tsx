@@ -6,14 +6,14 @@ import { useFormik } from 'formik';
 import { Button, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { tokenActions } from 'src/app/store/token';
-import { profileActions } from 'src/app/store/profile';
+import { tokenActions } from '../../../app/store/token';
+import { profileActions } from '../../../app/store/profile';
 import { SIGN_IN, SignInResponse, SignInVars, extractSignIn } from '../connections';
 import s from './sing_in_block.module.css';
-import { createErrorHandlers } from 'src/utility/createErrorHandlers';
-import { AuthFormErrors, AuthFormValues } from 'src/widgets/form/AuthForm/types';
-import { isLongEnough, isNotDefinedString } from 'src/utility/validation';
-import AuthForm from 'src/widgets/form/AuthForm/AuthForm';
+import { createErrorHandlers } from '../../../utility/createErrorHandlers';
+import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/types';
+import { isLongEnough, isNotDefinedString } from '../../../utility/validation';
+import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
 
 export type SingInBlockProps = {
   className?: string;
@@ -85,3 +85,4 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
 });
 
 SingInBlock.displayName = 'SingInBlock';
+export default SingInBlock;

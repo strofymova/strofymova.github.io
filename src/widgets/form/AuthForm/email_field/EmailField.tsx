@@ -6,7 +6,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import s from './email_field.module.css';
 import { AuthFormProps } from '../types';
-import { getValidates } from 'src/utility/validation';
+import { getValidates } from '../../../../utility/validation';
 import { FormItem } from '../../form_item';
 
 export type EmailFieldProps = Pick<AuthFormProps, 'className' | 'disabled' | 'autoFocusElement'> & {

@@ -1,6 +1,11 @@
 import { gql } from '@apollo/client';
-import { ProfileMutationsSigninArgs, AuthResult, ProfileMutationsSignupArgs, Mutation } from 'src/shared/server.types';
-import { get } from 'src/utility/unchanged';
+import {
+  ProfileMutationsSigninArgs,
+  AuthResult,
+  ProfileMutationsSignupArgs,
+  Mutation,
+} from '../../shared/server.types';
+import { get } from '../../utility/unchanged';
 
 export type SignInVars = ProfileMutationsSigninArgs;
 export type SignInResponse = Pick<Mutation, 'profile'>;

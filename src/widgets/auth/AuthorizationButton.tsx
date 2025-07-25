@@ -1,14 +1,17 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useModalManager } from 'src/hooks/useModalManager';
+import { useModalManager } from '../../hooks/useModalManager';
 import { ProfileCompletedForm } from '../form/profile_completed_form';
 import Modal from '../modal/Modal';
-import { SingInBlock } from 'src/pages/auth/SingInBlock/SingInBlock';
+import { SingInBlock } from '../../pages/auth/sign_in_block/SingInBlock';
 import s from './authorization.module.css';
-import { useThemeStyles } from 'src/hooks/useThemeStyles';
-import { SingUpBlock } from 'src/pages/auth/SingUpBlock';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
+import { SingUpBlock } from '../../pages/auth/sign_up_block/SingUpBlock';
 import { Button } from 'antd';
+import { useSelector } from 'react-redux';
+import { tokenSelectors } from '../../app/store/token';
+import { RootState } from '../../app/store';
 
 interface IAuthorizationButtonProps {
   isAuthorizated?: boolean;
@@ -51,18 +54,23 @@ function SignUpButton({ type, handleOnClickSignUp, title }: ModalState): ReactNo
 const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
   isAuthorizated: isAuthorizated = false,
 }: IAuthorizationButtonProps) => {
-  // console.log("update AuthorizationButton")
   const { t } = useTranslation();
   const { isModalOpen, openModal, closeModal } = useModalManager();
-  const [modalType, setModalType] = useState(isAuthorizated ? ModalType.profile : ModalType.signIn);
-  const [title, setTitle] = useState(
-    isAuthorizated ? t('widgets.authorization.profile') : t('widgets.authorization.signIn')
-  );
-
   const styleName = useThemeStyles(s.main, {
     light: s.light,
     dark: s.dark,
   });
+
+  const token = useSelector<RootState, RootState['token']>(tokenSelectors.get);
+  const [_isAuthorizated, setAuthorizated] = useState(isAuthorizated);
+  useEffect(() => {
+    setAuthorizated(token !== null);
+  }, [token]);
+
+  const [modalType, setModalType] = useState(_isAuthorizated ? ModalType.profile : ModalType.signIn);
+  const [title, setTitle] = useState(
+    _isAuthorizated ? t('widgets.authorization.profile') : t('widgets.authorization.signIn')
+  );
 
   const handleOnClickSignUp = () => {
     setModalType(ModalType.signUp);
@@ -70,13 +78,13 @@ const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
 
   const handleOnCloseModal = () => {
     closeModal();
-    setModalType(isAuthorizated ? ModalType.profile : ModalType.signIn);
+    setModalType(_isAuthorizated ? ModalType.profile : ModalType.signIn);
   };
 
   useEffect(() => {
-    setModalType(isAuthorizated ? ModalType.profile : ModalType.signIn);
+    setModalType(_isAuthorizated ? ModalType.profile : ModalType.signIn);
     closeModal();
-  }, [isAuthorizated, closeModal]);
+  }, [_isAuthorizated, closeModal]);
 
   useEffect(() => {
     switch (modalType) {

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import s from './password_field.module.css';
 import { AuthFormProps } from '../types';
-import { getValidates } from 'src/utility/validation';
+import { getValidates } from '../../../../utility/validation';
 import { FormItem } from '../../form_item';
 
 export type PasswordFieldProps = Pick<AuthFormProps, 'className' | 'disabled'> & {

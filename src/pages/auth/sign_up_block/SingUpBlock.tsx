@@ -6,14 +6,14 @@ import { useFormik } from 'formik';
 import { Button, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { tokenActions } from 'src/app/store/token';
-import { profileActions } from 'src/app/store/profile';
+import { tokenActions } from '../../../app/store/token';
+import { profileActions } from '../../../app/store/profile';
 import { SIGN_UP, SignUpResponse, SignUpVars, extractSignUp } from '../connections';
 import s from './sign_up_block.module.css';
-import { AuthFormErrors, AuthFormValues } from 'src/widgets/form/AuthForm/types';
-import { isLongEnough, isNotDefinedString } from 'src/utility/validation';
-import AuthForm from 'src/widgets/form/AuthForm/AuthForm';
-import { createErrorHandlers } from 'src/utility/createErrorHandlers';
+import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/types';
+import { isLongEnough, isNotDefinedString } from '../../../utility/validation';
+import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
+import { createErrorHandlers } from '../../../utility/createErrorHandlers';
 
 export type SingUpBlockProps = {
   className?: string;
@@ -39,7 +39,7 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
     });
     return {
       onSubmit: (values, { resetForm }) => {
-        signUp({ variables: { email: values.email, password: values.password, commandId: 'signup' } })
+        signUp({ variables: { email: values.email, password: values.password, commandId: 'strofymova_dev' } })
           .then((res) => {
             const result = extractSignUp(res.data);
             if (result) {
@@ -83,5 +83,5 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
     </div>
   );
 });
-
 SingUpBlock.displayName = 'SingUpBlock';
+export default SingUpBlock;
