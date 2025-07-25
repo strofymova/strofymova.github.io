@@ -1,8 +1,14 @@
+import type { CaseReducer, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-// import { CaseReducer } from '@reduxjs/toolkit/src/createReducer';
 import { RootState } from './index';
 
-export const initializedSlice = createSlice({
+export const initializedSlice = createSlice<
+  boolean,
+  { init: CaseReducer<boolean> },
+  'initialized',
+  SliceSelectors<boolean>,
+  'initialized'
+>({
   name: 'initialized',
   initialState: null,
   reducers: {

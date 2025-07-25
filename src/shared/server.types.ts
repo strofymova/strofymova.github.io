@@ -101,6 +101,7 @@ export type ProfileMutationsSigninArgs = {
 export type ProfileMutationsSignupArgs = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
+  commandId: Scalars['String']['input'];
 };
 
 export type ProfileMutationsUpdateArgs = {

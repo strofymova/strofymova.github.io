@@ -2,11 +2,11 @@ import React, { memo, useEffect, useMemo } from 'react';
 import cn from 'clsx';
 import { useFormik } from 'formik';
 import type { FormikConfig } from 'formik';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Button, message } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { profileSelectors } from 'src/app/store/profile';
+import { profileActions, profileSelectors } from 'src/app/store/profile';
 
 import { UPDATE_PROFILE, UpdateProfileResponse, UpdateProfileVars } from './connection';
 import s from './profile_completed_form.module.css';
@@ -14,15 +14,30 @@ import { Title } from '../title';
 import { ProfileForm, ProfileFormErrors, ProfileFormValues } from '../profile_form';
 import { isNotDefinedString } from 'src/utility/validation';
 import { createErrorHandlers } from 'src/utility/createErrorHandlers';
+import { GET_PROFILE, GetProfileResponse } from 'src/app/store/sagas/token/connections';
+import { tokenActions } from 'src/app/store/token';
 
 export type ProfileCompletedFormProps = {
   className?: string;
 };
 
 export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className }: ProfileCompletedFormProps) => {
-  const profile = useSelector(profileSelectors.get);
   const { t } = useTranslation();
-  const [update, { loading }] = useMutation<UpdateProfileResponse, UpdateProfileVars>(UPDATE_PROFILE);
+  const dispatch = useDispatch();
+  const { loading: profileLoading } = useQuery<GetProfileResponse>(GET_PROFILE, {
+    onCompleted: (data) => {
+      if (data.profile) {
+        dispatch(profileActions.set(data.profile));
+      }
+    },
+    onError: (error) => {
+      message.error(t(`errors.${error.message}`));
+    },
+    fetchPolicy: 'network-only',
+  });
+
+  const profile = useSelector(profileSelectors.get);
+  const [update, { loading: updateLoading }] = useMutation<UpdateProfileResponse, UpdateProfileVars>(UPDATE_PROFILE);
 
   const { onSubmit, validate, initialValues } = useMemo<
     Pick<FormikConfig<ProfileFormValues>, 'onSubmit' | 'validate' | 'initialValues'>
@@ -42,11 +57,11 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
     return {
       initialValues: {
         name: profile?.name,
-        about: profile?.about,
+        about: 'GraphQL test server not support save profile with "about"',
       },
       onSubmit: (values, { setErrors }) => {
-        update({ variables: { input: { name: values.name, about: values.about } } })
-          .then(() => message.success(t(`screens.ProfileScreen.updateProfile.success`)))
+        update({ variables: { input: { name: values.name } } })
+          .then(() => message.success(t(`screens.profile.updateProfile.success`)))
           .catch(catcherValidator({ setErrors, getMessage: (code) => t(`errors.${code}`) }));
       },
       validate: (values) => {
@@ -63,19 +78,29 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
     initialValues,
     onSubmit,
     validate,
+    enableReinitialize: true,
   });
   const { submitForm, setValues } = formManager;
 
   useEffect(() => {
-    setValues({ name: profile?.name, about: profile?.about });
+    setValues({ name: profile?.name, about: 'GraphQL test server not support save profile with "about"' });
   }, [profile, setValues]);
+
+  const loading = updateLoading || profileLoading;
+
+  const handleOnLoggout = () => {
+    dispatch(tokenActions.logout());
+  };
 
   return (
     <div className={cn(s.root, className)}>
-      <Title className={s.title}>{t(`screens.ProfileScreen.updateProfile.title`)}</Title>
+      <Title className={s.title}>{t(`screens.profile.updateProfile.title`)}</Title>
       <ProfileForm formManager={formManager} />
       <Button type="primary" loading={loading} onClick={submitForm}>
-        {t(`screens.ProfileScreen.updateProfile.save`)}
+        {t(`screens.profile.updateProfile.save`)}
+      </Button>
+      <Button type="primary" onClick={handleOnLoggout}>
+        {t(`screens.profile.logout`)}
       </Button>
     </div>
   );

@@ -51,6 +51,7 @@ function SignUpButton({ type, handleOnClickSignUp, title }: ModalState): ReactNo
 const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
   isAuthorizated: isAuthorizated = false,
 }: IAuthorizationButtonProps) => {
+  // console.log("update AuthorizationButton")
   const { t } = useTranslation();
   const { isModalOpen, openModal, closeModal } = useModalManager();
   const [modalType, setModalType] = useState(isAuthorizated ? ModalType.profile : ModalType.signIn);
@@ -73,12 +74,14 @@ const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
   };
 
   useEffect(() => {
+    setModalType(isAuthorizated ? ModalType.profile : ModalType.signIn);
+    closeModal();
+  }, [isAuthorizated, closeModal]);
+
+  useEffect(() => {
     switch (modalType) {
       case ModalType.signIn:
         setTitle(t('widgets.authorization.signIn'));
-        break;
-      case ModalType.signUp:
-        setTitle(t('widgets.authorization.signUp'));
         break;
       case ModalType.profile:
         setTitle(t('widgets.authorization.profile'));

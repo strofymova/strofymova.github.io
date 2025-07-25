@@ -49,8 +49,9 @@ export const resources = {
         },
       },
       screens: {
-        ProfileScreen: {
+        profile: {
           title: 'Profile',
+          logout: 'Logout',
           updateProfile: {
             title: 'Change profile',
             success: 'Profile changed successfully',
@@ -194,8 +195,9 @@ export const resources = {
         },
       },
       screens: {
-        ProfileScreen: {
+        profile: {
           title: 'Профиль',
+          logout: 'Выйти',
           updateProfile: {
             title: 'Изменить профиль',
             success: 'Профиль успешно изменен',

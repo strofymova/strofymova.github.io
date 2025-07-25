@@ -1,11 +1,16 @@
+import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-// import { CaseReducer } from '@reduxjs/toolkit/src/createReducer';
-// import { PayloadAction } from '@reduxjs/toolkit/src/createAction';
 import { RootState } from './index';
 
 export const TOKEN_KEY = 'token';
 
-export const tokenSlice = createSlice({
+export const tokenSlice = createSlice<
+  string,
+  { set: CaseReducer<string, PayloadAction<string>>; logout: CaseReducer<string> },
+  'token',
+  SliceSelectors<string>,
+  'token'
+>({
   name: 'token',
   initialState: null,
   reducers: {

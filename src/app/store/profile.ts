@@ -1,10 +1,15 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
+import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-// import { CaseReducer } from '@reduxjs/toolkit/src/createReducer';
 import { RootState } from './index';
 import { Profile } from 'src/shared/server.types';
 
-export const profileSlice = createSlice({
+export const profileSlice = createSlice<
+  Profile,
+  { set: CaseReducer<Profile, PayloadAction<Profile>> },
+  'profile',
+  SliceSelectors<Profile>,
+  'profile'
+>({
   name: 'profile',
   initialState: null,
   reducers: {

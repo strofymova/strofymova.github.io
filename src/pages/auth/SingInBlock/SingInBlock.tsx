@@ -5,11 +5,8 @@ import type { FormikConfig } from 'formik';
 import { useFormik } from 'formik';
 import { Button, message } from 'antd';
 import { useDispatch } from 'react-redux';
-// import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { tokenActions } from 'src/app/store/token';
-// import { createErrorHandlers } from 'src/utils/createErrorHandlers';
-// import { NavigationState } from 'src/app/navigation/types';
 import { profileActions } from 'src/app/store/profile';
 import { SIGN_IN, SignInResponse, SignInVars, extractSignIn } from '../connections';
 import s from './sing_in_block.module.css';
@@ -31,8 +28,6 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
   const { t } = useTranslation();
   const [signIn, { loading }] = useMutation<SignInResponse, SignInVars>(SIGN_IN, { fetchPolicy: 'no-cache' });
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
 
   const { onSubmit, validate } = useMemo<Pick<FormikConfig<AuthFormValues>, 'onSubmit' | 'validate'>>(() => {
     const { catcher } = createErrorHandlers((code, _, error) => {
@@ -52,7 +47,6 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
               dispatch(profileActions.set(result.profile));
             }
             resetForm();
-            // navigate((location.state as NavigationState)?.from || '/');
           })
           .catch(catcher);
       },
@@ -69,7 +63,7 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
         return errors;
       },
     };
-  }, [dispatch, /*location.state, navigate,*/ signIn, t]);
+  }, [dispatch, signIn, t]);
 
   const formik = useFormik<AuthFormValues>({
     onSubmit,

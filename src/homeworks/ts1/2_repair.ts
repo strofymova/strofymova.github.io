@@ -4,8 +4,9 @@
 
 // Мы это не проходили, но по тексту ошибки можно понять, как это починить
 export const getFakeApi = async (): Promise<void> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const result = await fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => response.json());
-  console.log(result.toString());
+  //   console.log(result.toString());
 };
 
 // Мы это не проходили, но по тексту ошибки можно понять, как это починить

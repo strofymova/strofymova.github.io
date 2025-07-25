@@ -19,9 +19,9 @@ export const extractSignIn = (data: SignInResponse): Mutation['profile']['signin
 export type SignUpVars = ProfileMutationsSignupArgs;
 export type SignUpResponse = AuthResult;
 export const SIGN_UP = gql`
-  mutation signUp($email: String!, $password: String!) {
+  mutation signUp($email: String!, $password: String!, $commandId: String!) {
     profile {
-      signup(email: $email, password: $password) {
+      signup(email: $email, password: $password, commandId: $commandId) {
         token
       }
     }

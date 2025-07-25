@@ -14,8 +14,6 @@ import { AuthFormErrors, AuthFormValues } from 'src/widgets/form/AuthForm/types'
 import { isLongEnough, isNotDefinedString } from 'src/utility/validation';
 import AuthForm from 'src/widgets/form/AuthForm/AuthForm';
 import { createErrorHandlers } from 'src/utility/createErrorHandlers';
-// import { useNavigate, useLocation } from 'react-router-dom';
-// import { NavigationState } from 'src/app/navigation/types';
 
 export type SingUpBlockProps = {
   className?: string;
@@ -30,8 +28,6 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
   const { t } = useTranslation();
   const [signUp, { loading }] = useMutation<SignUpResponse, SignUpVars>(SIGN_UP, { fetchPolicy: 'no-cache' });
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
 
   const { onSubmit, validate } = useMemo<Pick<FormikConfig<AuthFormValues>, 'onSubmit' | 'validate'>>(() => {
     const { catcher } = createErrorHandlers((code, _, error) => {
@@ -43,7 +39,7 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
     });
     return {
       onSubmit: (values, { resetForm }) => {
-        signUp({ variables: { email: values.email, password: values.password } })
+        signUp({ variables: { email: values.email, password: values.password, commandId: 'signup' } })
           .then((res) => {
             const result = extractSignUp(res.data);
             if (result) {
@@ -51,7 +47,6 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
               dispatch(profileActions.set(result.profile));
             }
             resetForm();
-            // navigate((location.state as NavigationState)?.from || '/');
           })
           .catch(catcher);
       },
@@ -68,7 +63,7 @@ export const SingUpBlock = memo<SingUpBlockProps>(({ className }: SingUpBlockPro
         return errors;
       },
     };
-  }, [dispatch, /*location.state, navigate,*/ signUp, t]);
+  }, [dispatch, signUp, t]);
 
   const formik = useFormik<AuthFormValues>({
     onSubmit,
