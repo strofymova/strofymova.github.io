@@ -40,7 +40,7 @@ function App() {
   return (
     <LocaleContext.Provider value={{ locale, handleSwitchLocale }}>
       <ThemeContext.Provider value={{ theme, handleSwitchTheme }}>
-        <Layout/>
+        <Layout />
       </ThemeContext.Provider>
     </LocaleContext.Provider>
   );

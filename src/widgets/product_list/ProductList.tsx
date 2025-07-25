@@ -1,4 +1,4 @@
-import React, { useRef} from 'react';
+import React, { useRef } from 'react';
 import { clsx } from 'clsx';
 import style from './product_list.module.css';
 import { IProduct, Product } from '../marketplace/products/Product';
