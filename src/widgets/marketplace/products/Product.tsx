@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
 export interface IProduct {
+  id: string;
   price: number;
   imageUrl: string | null;
   name: string;
@@ -14,7 +15,7 @@ export interface IProduct {
   disable?: boolean;
 }
 
-export const Product = forwardRef<HTMLDivElement, IProduct>(({ price, imageUrl, name, description, disable }, ref) => {
+export const Product = forwardRef<HTMLDivElement, IProduct>(({id, price, imageUrl, name, description, disable }: IProduct, ref) => {
   const { t } = useTranslation();
   const styleName = useThemeStyles(style.main, {
     light: style.light,
