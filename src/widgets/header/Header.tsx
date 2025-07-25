@@ -4,6 +4,7 @@ import styles from './header.module.css';
 import ThemeToggleButton from '../theme/ThemeToggleButton';
 import LocalizationSwitcher from '../localization/LocalizationSwitcher';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
+import AuthorizationButton from '../auth/AuthorizationButton';
 
 export function Header(): React.ReactNode {
   const styleName = useThemeStyles(styles.main, {
@@ -17,6 +18,7 @@ export function Header(): React.ReactNode {
       <div>FASHION</div>
       <LocalizationSwitcher></LocalizationSwitcher>
       <ThemeToggleButton></ThemeToggleButton>
+      <AuthorizationButton />
     </div>
   );
 }

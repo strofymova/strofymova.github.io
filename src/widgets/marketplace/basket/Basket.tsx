@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { clsx } from 'clsx';
 import style from './basket.module.css';
 import { useTranslation } from 'react-i18next';

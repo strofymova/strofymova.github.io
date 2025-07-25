@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Locale } from '../widgets/localization/settings';
 
 import AppComponent from './AppComponent';
+import { ClientProvider } from './client';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 export enum Theme {
   light = 'light',
@@ -41,7 +44,12 @@ const AppContainer = () => {
   return (
     <LocaleContext.Provider value={{ locale, handleSwitchLocale }}>
       <ThemeContext.Provider value={{ theme, handleSwitchTheme }}>
-        <AppComponent />
+        <ClientProvider>
+          <Provider store={store}>
+            <AppComponent />
+          </Provider>
+        </ClientProvider>
+        ;
       </ThemeContext.Provider>
     </LocaleContext.Provider>
   );

@@ -1,3 +1,4 @@
+/* global IntersectionObserverInit */
 import { RefObject, useEffect } from 'react';
 
 export const useIntersectionObserver = (
