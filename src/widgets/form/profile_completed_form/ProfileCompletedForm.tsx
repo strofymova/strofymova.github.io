@@ -10,7 +10,6 @@ import { profileActions, profileSelectors } from '../../../app/store/profile';
 
 import { UPDATE_PROFILE, UpdateProfileResponse, UpdateProfileVars } from './connection';
 import s from './profile_completed_form.module.css';
-import { Title } from '../title';
 import { ProfileForm, ProfileFormErrors, ProfileFormValues } from '../profile_form';
 import { isNotDefinedString } from '../../../utility/validation';
 import { createErrorHandlers } from '../../../utility/createErrorHandlers';
