@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryContext, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import FilterRangeContainer from './FilterRangeContainer';
 import { FilterRangeStory } from './FilterRangeStory';
 
@@ -20,7 +20,7 @@ export default {
       control: { type: 'number' },
     },
   },
-  decorators: [(Story, context: StoryContext) => <Story />],
+  decorators: [(Story) => <Story />],
   tags: ['autodocs'],
 } as Meta<typeof FilterRangeStory>;
 

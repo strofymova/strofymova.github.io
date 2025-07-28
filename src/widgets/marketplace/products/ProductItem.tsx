@@ -2,7 +2,7 @@ import React from 'react';
 import style from './product.module.css';
 import { clsx } from 'clsx';
 
-interface IProductItemProps {
+export interface IProductItemProps {
   title: string;
   value: string | number;
   className?: string;

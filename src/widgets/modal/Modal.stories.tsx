@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryContext, StoryObj } from '@storybook/react-webpack5';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Modal from './Modal';
 import LocalizationProvider from '../localization/LocalizationProvider';
 import { Locale } from '../localization/settings';
@@ -8,7 +8,7 @@ const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
   decorators: [
-    (Story, context: StoryContext) => (
+    (Story) => (
       <LocalizationProvider initialLocale={Locale.ru}>
         <Story />
       </LocalizationProvider>

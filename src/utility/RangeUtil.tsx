@@ -1,6 +1,4 @@
-export const getValueInRange = (value: number, min: number, max: number) => {
-  return Math.min(Math.max(value, min), max);
-};
+export const getValueInRange = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
 export const getValueByCursor = ({
   min,

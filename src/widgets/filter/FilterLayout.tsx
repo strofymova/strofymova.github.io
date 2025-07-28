@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, forwardRef } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
 import styles from './filter_layout.module.css';
 import { clsx } from 'clsx';
