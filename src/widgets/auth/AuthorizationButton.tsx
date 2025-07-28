@@ -63,9 +63,10 @@ const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
 
   const token = useSelector<RootState, RootState['token']>(tokenSelectors.get);
   const [_isAuthorizated, setAuthorizated] = useState(isAuthorizated);
+
   useEffect(() => {
-    setAuthorizated(token !== null);
-  }, [token]);
+    setAuthorizated(token !== null || isAuthorizated);
+  }, [token, isAuthorizated]);
 
   const [modalType, setModalType] = useState(_isAuthorizated ? ModalType.profile : ModalType.signIn);
   const [title, setTitle] = useState(

@@ -39,7 +39,7 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
     });
     return {
       onSubmit: (values, { resetForm }) => {
-        console.log("Submit values: ", JSON.stringify(values));
+        console.log('Submit values: ', JSON.stringify(values));
         signIn({ variables: { email: values.email, password: values.password } })
           .then((res) => {
             const result = extractSignIn(res.data);

@@ -38,7 +38,6 @@ const meta: Meta<typeof AuthorizationButton> = {
 export default meta;
 type Story = StoryObj<typeof AuthorizationButton>;
 
-// Базовая кнопка для неавторизованного пользователя
 export const Default: Story = {
   args: {
     isAuthorizated: false,
