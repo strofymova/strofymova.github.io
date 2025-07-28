@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.field {
+  position: relative;
+  width: 60%;
+  height: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 0 15px;
+}
+
+.field:hover {
+  background-color: #f0f0f0;
+}
+
+.runnerRight {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: rgb(18, 161, 204);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.runnerLeft {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #99f;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.input {
+    width: 12%;
+    min-width: 40px;
+}

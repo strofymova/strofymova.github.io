@@ -21,6 +21,14 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 98%;
+}
+
+.productsSmall {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 77%;
 }
 
 .light {

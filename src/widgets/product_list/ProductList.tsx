@@ -8,9 +8,15 @@ export interface IProductList {
   products: IProduct[];
   className?: string;
   onIntersection?: () => void;
+  infinityScroll: boolean;
 }
 
-export function ProductList({ products, className, onIntersection }: IProductList): React.ReactElement {
+export function ProductList({
+  products,
+  className,
+  onIntersection,
+  infinityScroll: infinityScroll = true,
+}: IProductList): React.ReactNode {
   const lastProductRef = useRef<HTMLDivElement>(null);
 
   useIntersectionObserver(
@@ -27,7 +33,7 @@ export function ProductList({ products, className, onIntersection }: IProductLis
     <div className={clsx(style.main, className)}>
       {products.map((product, index) => {
         const isLast = index === products.length - 1;
-        return <Product ref={isLast ? lastProductRef : null} key={product.id} {...product} />;
+        return <Product ref={infinityScroll && isLast ? lastProductRef : null} key={product.id} {...product} />;
       })}
     </div>
   );
