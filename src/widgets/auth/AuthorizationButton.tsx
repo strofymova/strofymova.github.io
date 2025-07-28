@@ -13,10 +13,6 @@ import { useSelector } from 'react-redux';
 import { tokenSelectors } from '../../app/store/token';
 import { RootState } from '../../app/store';
 
-interface IAuthorizationButtonProps {
-  isAuthorizated?: boolean;
-}
-
 enum ModalType {
   signIn,
   signUp,
@@ -51,9 +47,7 @@ function SignUpButton({ type, handleOnClickSignUp, title }: ModalState): ReactNo
   return null;
 }
 
-const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
-  isAuthorizated: isAuthorizated = false,
-}: IAuthorizationButtonProps) => {
+const AuthorizationButton: React.FC = () => {
   const { t } = useTranslation();
   const { isModalOpen, openModal, closeModal } = useModalManager();
   const styleName = useThemeStyles(s.main, {
@@ -62,11 +56,11 @@ const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
   });
 
   const token = useSelector<RootState, RootState['token']>(tokenSelectors.get);
-  const [_isAuthorizated, setAuthorizated] = useState(isAuthorizated);
+  const [_isAuthorizated, setAuthorizated] = useState<boolean>(token !== null);
 
   useEffect(() => {
-    setAuthorizated(token !== null || isAuthorizated);
-  }, [token, isAuthorizated]);
+    setAuthorizated(token !== null);
+  }, [token]);
 
   const [modalType, setModalType] = useState(_isAuthorizated ? ModalType.profile : ModalType.signIn);
   const [title, setTitle] = useState(

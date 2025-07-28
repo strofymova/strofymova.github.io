@@ -27,11 +27,7 @@ const meta: Meta<typeof AuthorizationButton> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    isAuthorizated: {
-      control: 'boolean',
-      description: 'Флаг авторизации пользователя',
-    },
+  argTypes: { 
   },
 };
 
@@ -40,6 +36,5 @@ type Story = StoryObj<typeof AuthorizationButton>;
 
 export const Default: Story = {
   args: {
-    isAuthorizated: false,
   },
 };
