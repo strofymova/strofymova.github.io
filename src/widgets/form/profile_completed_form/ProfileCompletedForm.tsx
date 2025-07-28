@@ -60,6 +60,7 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
         about: 'GraphQL test server not support save profile with "about"',
       },
       onSubmit: (values, { setErrors }) => {
+        console.log("Submit values: ", JSON.stringify(values));
         update({ variables: { input: { name: values.name } } })
           .then(() => message.success(t(`screens.profile.updateProfile.success`)))
           .catch(catcherValidator({ setErrors, getMessage: (code) => t(`errors.${code}`) }));
@@ -94,7 +95,7 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
 
   return (
     <div className={cn(s.root, className)}>
-      <Title className={s.title}>{t(`screens.profile.updateProfile.title`)}</Title>
+      {/* <Title className={s.title}>{t(`screens.profile.updateProfile.title`)}</Title> */}
       <ProfileForm formManager={formManager} />
       <Button type="primary" loading={loading} onClick={submitForm}>
         {t(`screens.profile.updateProfile.save`)}

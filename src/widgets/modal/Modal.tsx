@@ -4,16 +4,18 @@ import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 import { Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-import { useThemeStyles } from 'src/hooks/useThemeStyles';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
+import { clsx } from 'clsx';
 
 interface ModalProps {
   visible: boolean;
   onClose: () => void;
   children?: React.ReactNode;
   title?: string;
+  className?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose, title }) => {
+const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose, title, className }) => {
   const { t } = useTranslation();
   const styleName = useThemeStyles(styles.modalContent, {
     light: styles.light,
@@ -22,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose, title
   return visible
     ? createPortal(
         <div className={styles.modalOverlay}>
-          <div className={styleName}>
+          <div className={clsx(styleName, className)}>
             <div className={styles.title}>
               <span>{title}</span>
               <Button

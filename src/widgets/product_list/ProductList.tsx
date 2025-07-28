@@ -7,7 +7,7 @@ import Modal from '../modal/Modal';
 import { useModalManager } from '../../hooks/useModalManager';
 import ProductEdit from '../marketplace/products/ProductEdit';
 import ProductAdd from '../marketplace/products/ProductAdd';
-import { generateUUID } from 'src/utility/GeneratorUtil';
+import { generateUUID } from '../../utility/GeneratorUtil';
 import { useTranslation } from 'react-i18next';
 
 export interface IProductList {

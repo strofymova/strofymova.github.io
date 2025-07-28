@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import type { FormikContextType, FormikErrors } from 'formik';
-import { Help } from 'src/widgets/form/form_item';
+import { Help } from '../widgets/form/form_item';
 import { get } from 'unchanged';
 
 export type ValidateStatus = 'error' | '';

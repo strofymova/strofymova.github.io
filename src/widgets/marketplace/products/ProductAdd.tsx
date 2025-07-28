@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import style from './product.module.css';
 import { useTranslation } from 'react-i18next';
-import { useThemeStyles } from 'src/hooks/useThemeStyles';
+import { useThemeStyles } from '../../../hooks/useThemeStyles';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 

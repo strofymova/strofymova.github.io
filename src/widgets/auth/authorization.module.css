@@ -22,5 +22,14 @@
 .signUpBtn {
     text-align: center;
     margin-top: 20px;
-    width: 100%;
+    width: 90%;
+    margin-left: 12px;
+    margin-bottom: 12px;
+}
+
+.modal {
+  background-color: white;
+   > div > div {
+    margin: 10px;
+   }
 }

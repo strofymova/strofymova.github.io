@@ -102,7 +102,7 @@ const AuthorizationButton: React.FC<IAuthorizationButtonProps> = ({
       <button className={styleName} onClick={openModal}>
         {title}
       </button>
-      <Modal visible={isModalOpen} onClose={handleOnCloseModal}>
+      <Modal className={s.modal} title={title} visible={isModalOpen} onClose={handleOnCloseModal}>
         <Content type={modalType} />
         <SignUpButton
           type={modalType}
