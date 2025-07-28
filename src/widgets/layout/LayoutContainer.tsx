@@ -8,7 +8,7 @@ interface ILayoutContainerProps {
 }
 
 const LayoutContainer: React.FC<ILayoutContainerProps> = ({ infinityScroll }: ILayoutContainerProps) => {
-  const [products, setProducts] = useState<IProduct[]>(getIProducts(8));
+  const [products, setProducts] = useState<IProduct[]>(getIProducts(7));
 
   const loadProducts = useCallback((count: number) => {
     setProducts((prevProducts) => [...prevProducts, ...getIProducts(count)]);

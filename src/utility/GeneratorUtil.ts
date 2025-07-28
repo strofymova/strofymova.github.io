@@ -9,8 +9,9 @@ export const generateUUID = (): string =>
   });
 
 export const getIProduct = (): IProduct => {
-  const { name, desc, price } = createRandomProduct(new Date().toISOString());
+  const { id, name, desc, price } = createRandomProduct(new Date().toISOString());
   return {
+    id: id,
     price: price,
     imageUrl: null,
     name: name,
