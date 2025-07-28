@@ -35,10 +35,6 @@ const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore
     });
 
     observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
   }, [productListStyle]);
 
   return (
