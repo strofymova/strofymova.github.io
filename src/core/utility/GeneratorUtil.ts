@@ -1,5 +1,5 @@
-import { createRandomProduct } from '../homeworks/ts1/3_write';
-import { IProduct } from '../widgets/marketplace/products/Product';
+import { createRandomProduct } from '../../homeworks/ts1/3_write';
+import { IProduct } from '../../widgets/marketplace/products/Product';
 
 export const generateUUID = (): string =>
   'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

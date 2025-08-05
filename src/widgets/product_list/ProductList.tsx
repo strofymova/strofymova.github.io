@@ -7,7 +7,7 @@ import Modal from '../modal/Modal';
 import { useModalManager } from '../../hooks/useModalManager';
 import ProductEdit from '../marketplace/products/ProductEdit';
 import ProductAdd from '../marketplace/products/ProductAdd';
-import { generateUUID } from '../../utility/GeneratorUtil';
+import { generateUUID } from '../../core/utility/GeneratorUtil';
 import { useTranslation } from 'react-i18next';
 
 export interface IProductList {
@@ -46,9 +46,6 @@ export function ProductList({
   };
 
   const handleOnSaveProduct = (saveProduct: IProduct) => {
-    console.log(
-      'handleOnSaveProduct: [' + saveProduct.price + ',' + saveProduct.name + ',' + saveProduct.description + ']'
-    );
     if (_products.findIndex((product) => product.id === saveProduct.id) === -1) {
       setProducts([saveProduct, ..._products]);
     } else {

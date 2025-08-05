@@ -11,10 +11,10 @@ import { profileActions, profileSelectors } from '../../../app/store/profile';
 import { UPDATE_PROFILE, UpdateProfileResponse, UpdateProfileVars } from './connection';
 import s from './profile_completed_form.module.css';
 import { ProfileForm, ProfileFormErrors, ProfileFormValues } from '../profile_form';
-import { isNotDefinedString } from '../../../utility/validation';
-import { createErrorHandlers } from '../../../utility/createErrorHandlers';
 import { GET_PROFILE, GetProfileResponse } from '../../../app/store/sagas/token/connections';
 import { tokenActions } from '../../../app/store/token';
+import { createErrorHandlers } from '../../../core/utility/createErrorHandlers';
+import { isNotDefinedString } from '../../../core/utility/validation';
 
 export type ProfileCompletedFormProps = {
   className?: string;
@@ -59,7 +59,6 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
         about: 'GraphQL test server not support save profile with "about"',
       },
       onSubmit: (values, { setErrors }) => {
-        console.log('Submit values: ', JSON.stringify(values));
         update({ variables: { input: { name: values.name } } })
           .then(() => message.success(t(`screens.profile.updateProfile.success`)))
           .catch(catcherValidator({ setErrors, getMessage: (code) => t(`errors.${code}`) }));

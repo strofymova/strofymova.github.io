@@ -40,7 +40,6 @@ export function ProductEdit({ id, price, imageUrl, name, description, onSave }: 
   });
 
   const onSubmit: SubmitHandler<IProduct> = (data) => {
-    console.log('Submitted data:', JSON.stringify(data));
     if (onSave) {
       onSave(data);
     }

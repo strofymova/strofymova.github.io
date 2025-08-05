@@ -27,14 +27,12 @@ const meta: Meta<typeof AuthorizationButton> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: { 
-  },
+  argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof AuthorizationButton>;
 
 export const Default: Story = {
-  args: {
-  },
+  args: {},
 };
