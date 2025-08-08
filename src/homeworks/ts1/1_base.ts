@@ -84,9 +84,8 @@ type TransformedCustomers = {
     isSubscribed: boolean;
   };
 };
-export const transformCustomers = (customers: Customer[]): TransformedCustomers => {
-  return customers.reduce((acc: TransformedCustomers, customer: Customer) => {
+export const transformCustomers = (customers: Customer[]): TransformedCustomers =>
+  customers.reduce((acc: TransformedCustomers, customer: Customer) => {
     acc[customer.id] = { name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed };
     return acc;
   }, {});
-};

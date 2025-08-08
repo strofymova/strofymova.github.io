@@ -142,8 +142,9 @@ export const createRandomProduct = (createdAt: string): Product => {
 };
 
 // Пример использования
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const randomProduct = createRandomProduct(new Date().toISOString());
-console.log(randomProduct);
+// console.log(randomProduct);
 
 function getOperationName(id: string, operation: string): string {
   return operation + '_' + id;
@@ -173,5 +174,6 @@ export const createRandomOperation = (createdAtValue: string): Operation => {
 };
 
 // Пример использования
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const randomOperation = createRandomOperation(new Date().toISOString());
-console.log(randomOperation);
+// console.log(randomOperation);

@@ -25,10 +25,8 @@ const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore
       for (const entry of entries) {
         const widthFilter = entry.contentRect.width;
         if (widthFilter < minWidthFilter && productListStyle === styles.productsSmall) {
-          console.log('update to large width');
           setProductListStyle(styles.products);
         } else if (widthFilter >= minWidthFilter && productListStyle === styles.products) {
-          console.log('update to small width');
           setProductListStyle(styles.productsSmall);
         }
       }

@@ -2,7 +2,7 @@ name: Test, Lint, Build and Deploy on Github Pages
 
 on:
   push:
-    branches: ["master", "main", "complex-component-homework-9"]
+    branches: ["master", "main", "forms_homework_10"]
 
   # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
   workflow_dispatch:

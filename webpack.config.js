@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const port = 2233;
+const port = 2033;
 const dist = path.join(__dirname, 'dist');
 const src = path.join(__dirname, 'src');
 const host = 'localhost';
@@ -87,14 +87,14 @@ module.exports = (_, args) => {
               loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: 'css-loader',
+              loader: 'sass-loader',
               options: {
-                modules: {
-                  localIdentName: '[name]_[local]-[hash:base64:5]',
+                implementation: require('sass'),
+                sassOptions: {
+                  fiber: false,  // если не используете Fiber
                 },
               },
             },
-            'sass-loader',
           ],
         },
       ],

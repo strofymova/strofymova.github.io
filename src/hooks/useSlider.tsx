@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { getPercentagePosition, getValueByCursor, getValueInRange } from '../utility/RangeUtil';
 
 type SliderProps = {

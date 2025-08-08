@@ -4,8 +4,9 @@
 
 // Мы это не проходили, но по тексту ошибки можно понять, как это починить
 export const getFakeApi = async (): Promise<void> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const result = await fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => response.json());
-  console.log(result);
+  //   console.log(result.toString());
 };
 
 // Мы это не проходили, но по тексту ошибки можно понять, как это починить
@@ -36,6 +37,7 @@ export type Percent = {
 };
 
 // Здесь, возможно, нужно использовать as, возможно в switch передавать немного по-другому
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getDataAmount = (data: Data): number => {
   switch (data.type) {
     case 'Money':
