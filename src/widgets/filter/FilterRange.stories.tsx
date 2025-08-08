@@ -1,11 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import FilterRangeContainer from './FilterRangeContainer';
 import { FilterRangeStory } from './FilterRangeStory';
 
 export default {
   title: 'Components/FilterRangeContainer',
-  component: FilterRangeContainer,
+  component: FilterRangeStory,
   argTypes: {
     min: {
       control: { type: 'number', min: -1000, max: 1000, step: 1 },

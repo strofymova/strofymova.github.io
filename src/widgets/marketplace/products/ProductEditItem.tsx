@@ -10,6 +10,7 @@ export interface IProductEditItemProps {
   className?: string;
   type?: string;
   step?: string;
+  error?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
 }
@@ -17,7 +18,7 @@ export interface IProductEditItemProps {
 export const ProductEditItem = forwardRef<
   HTMLInputElement,
   IProductEditItemProps & ReturnType<UseFormRegister<IProduct>>
->(({ name, title, className, type, step, onBlur, onChange }: IProductEditItemProps, ref) => (
+>(({ name, title, className, type, step, error, onBlur, onChange }: IProductEditItemProps, ref) => (
   <div className={clsx(className, style.item)}>
     <div className={style.item_title}>{title}</div>
     <input
@@ -29,6 +30,7 @@ export const ProductEditItem = forwardRef<
       onChange={onChange}
       onBlur={onBlur}
     />
+    {error && <span className="error-message">{error}</span>}
   </div>
 ));
 ProductEditItem.displayName = 'ProductEditItem';

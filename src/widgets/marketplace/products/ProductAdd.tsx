@@ -24,7 +24,7 @@ export const ProductAdd = ({ onClick }: IProductAddProps): ReactNode => {
         <Button
           className={style.add_btn}
           type="primary"
-          icon={<PlusOutlined />}
+          icon={<PlusOutlined className={style.custom_icon} />}
           onClick={onClick}
           title={t('widgets.product.add')}
         />
