@@ -6,7 +6,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { ProfileFormProps } from '../types';
 import s from './name_field.module.css';
-import { getValidates } from '../../../../utility/validation';
+import { getValidates } from '../../../../core/utility/validation';
 import { FormItem } from '../../../../widgets/form/form_item';
 
 export type NameFieldProps = Pick<ProfileFormProps, 'className' | 'disabled' | 'autoFocusElement'> & {

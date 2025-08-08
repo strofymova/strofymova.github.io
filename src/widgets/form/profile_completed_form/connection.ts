@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 import { PROFILE } from '../../../app/connection';
 import { Mutation, ProfileMutationsUpdateArgs } from '../../../shared/server.types';
 
-import { get } from '../../../utility/unchanged';
+import { get } from '../../../core/utility/unchanged';
 
 export type UpdateProfileVars = ProfileMutationsUpdateArgs;
 export type UpdateProfileResponse = Pick<Mutation, 'profile'>;

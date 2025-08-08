@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import LayoutComponent from './LayoutComponent';
 import { IProduct } from '../marketplace/products/Product';
-import { getIProducts } from '../../utility/GeneratorUtil';
+import { getIProducts } from '../../core/utility/GeneratorUtil';
 
 interface ILayoutContainerProps {
   infinityScroll?: boolean;
