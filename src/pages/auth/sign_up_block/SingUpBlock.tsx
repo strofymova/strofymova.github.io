@@ -11,9 +11,9 @@ import { profileActions } from '../../../app/store/profile';
 import { SIGN_UP, SignUpResponse, SignUpVars, extractSignUp } from '../connections';
 import s from './sign_up_block.module.css';
 import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/types';
-import { isLongEnough, isNotDefinedString } from '../../../utility/validation';
+import { isLongEnough, isNotDefinedString } from '../../../core/utility/validation';
 import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
-import { createErrorHandlers } from '../../../utility/createErrorHandlers';
+import { createErrorHandlers } from '../../../core/utility/createErrorHandlers';
 
 export type SingUpBlockProps = {
   className?: string;

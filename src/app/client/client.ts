@@ -4,7 +4,7 @@ import { errorLink } from '../../app/client/errorLink';
 import { URL } from '../../app/client/config';
 import { TOKEN_KEY } from '../../app/store/token';
 import possibleTypes from './possibleTypes.json';
-import { storage } from '../../utility/storage';
+import { storage } from '../../core/utility/storage';
 
 const httpLink = createHttpLink({
   uri: `${URL}/graphql`,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getPercentagePosition, getValueByCursor, getValueInRange } from '../utility/RangeUtil';
+import { getPercentagePosition, getValueByCursor, getValueInRange } from '../core/utility/RangeUtil';
 
 type SliderProps = {
   initialValue: number;

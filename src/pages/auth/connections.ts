@@ -5,7 +5,7 @@ import {
   ProfileMutationsSignupArgs,
   Mutation,
 } from '../../shared/server.types';
-import { get } from '../../utility/unchanged';
+import { get } from '../../core/utility/unchanged';
 
 export type SignInVars = ProfileMutationsSigninArgs;
 export type SignInResponse = Pick<Mutation, 'profile'>;

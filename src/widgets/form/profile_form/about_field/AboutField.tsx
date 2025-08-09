@@ -5,7 +5,7 @@ import type { FormikHandlers } from 'formik/dist/types';
 import { useTranslation } from 'react-i18next';
 import { ProfileFormProps } from '../types';
 import s from './about_field.module.css';
-import { getValidates } from '../../../../utility/validation';
+import { getValidates } from '../../../../core/utility/validation';
 import { FormItem } from '../../../../widgets/form/form_item';
 
 export type AboutFieldProps = Pick<ProfileFormProps, 'className' | 'disabled'> & {

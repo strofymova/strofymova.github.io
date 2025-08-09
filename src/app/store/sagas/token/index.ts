@@ -2,7 +2,7 @@ import { put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { TOKEN_KEY, tokenActions, tokenSelectors } from '../../token';
 import { profileActions } from '../../profile';
 import { TokenChannel } from './TokenChannel';
-import { storage } from '../../../../utility/storage';
+import { storage } from '../../../../core/utility/storage';
 
 const tokenChannel = new TokenChannel('token-saver-channel');
 
