@@ -24,6 +24,18 @@ describe('AccountService - userDiscount', () => {
       expect(discount?.discount).toBe(0.25);
     });
 
+    it('should set and get free user discount', async () => {
+      service.setUserTypeDiscount(UserType.free, 0);
+      const discount = service.getUserTypeDiscount(UserType.free);
+      expect(discount?.discount).toBe(0);
+    });
+
+    it('should set and get gold user discount', async () => {
+      service.setUserTypeDiscount(UserType.gold, 0.2);
+      const discount = service.getUserTypeDiscount(UserType.gold);
+      expect(discount?.discount).toBe(0.2);
+    });
+
     it('should return undefined for non-existent user type', async () => {
       const discount = service.getUserTypeDiscount('NonExistent' as UserType);
       expect(discount).toBeUndefined();

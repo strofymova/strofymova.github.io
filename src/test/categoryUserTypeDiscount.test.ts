@@ -15,6 +15,12 @@ describe('AccountService', () => {
       expect(discount.discount).toBe(0.1);
     });
 
+    it('should set and get category discount for gold user', async () => {
+      service.setCategoryDiscount(Category.toy, UserType.gold, 0.01);
+      const discount = service.getCategoryDiscount(Category.toy, UserType.gold);
+      expect(discount.discount).toBe(0.01);
+    });
+
     it('should return undefined for non-existent category discount', async () => {
       const discount = service.getCategoryDiscount(Category.food, UserType.premium);
       expect(discount).toBeUndefined();
