@@ -30,7 +30,12 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
       <div className={styleName} ref={ref}>
         <div className={style.title}>
           {t('widgets.product.card')}
-          <Button type="primary" icon={<EditOutlined />} size="small" onClick={() => onClick(id)} />
+          <Button
+            type="primary"
+            icon={<EditOutlined className={style.edit_button} />}
+            size="small"
+            onClick={() => onClick(id)}
+          />
         </div>
         <img className={style.img} src={imageUrl === null ? unknowImageUrl : imageUrl} />
         <div className={style.info}>

@@ -16,11 +16,11 @@ export const FilterRangeStory: React.FC<FilterRangeContainerProps> = (args: Filt
 
   useEffect(() => {
     setSelectedMin(Math.min(args.valueMin, selectedMax));
-  }, [args.valueMin]);
+  }, [args.valueMin, selectedMax]);
 
   useEffect(() => {
     setSelectedMax(Math.max(args.valueMax, selectedMin));
-  }, [args.valueMax]);
+  }, [args.valueMax, selectedMin]);
 
   return (
     <div style={{ width: '500px', padding: '20px' }}>
