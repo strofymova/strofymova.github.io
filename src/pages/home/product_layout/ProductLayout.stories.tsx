@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import LayoutContainer from './LayoutContainer';
-const meta: Meta<typeof LayoutContainer> = {
-  title: 'Components/LayoutContainer',
-  component: LayoutContainer,
+import ProductLayoutContainer from './ProductLayoutContainer';
+const meta: Meta<typeof ProductLayoutContainer> = {
+  title: 'Components/ProductLayoutContainer',
+  component: ProductLayoutContainer,
   parameters: {
     layout: 'fullscreen',
   },
@@ -13,7 +13,7 @@ const meta: Meta<typeof LayoutContainer> = {
       defaultValue: true,
     },
   },
-} satisfies Meta<typeof LayoutContainer>;
+} satisfies Meta<typeof ProductLayoutContainer>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

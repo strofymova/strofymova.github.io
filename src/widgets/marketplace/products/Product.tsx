@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { useThemeStyles } from '../../../hooks/useThemeStyles';
 import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
+import { basketActions, basketSelectors } from 'src/app/store/basket';
+import { useDispatch, useSelector } from 'react-redux';
 
 export interface IProduct {
   id: string;
@@ -26,6 +28,32 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
       dark: style.dark,
     });
 
+    const dispatch = useDispatch();
+    const basketItems = useSelector(basketSelectors.get);
+    const productInBasket = basketItems.find((basketProduct) => basketProduct.product.id === id);
+    const _count = productInBasket?.count || 0;
+
+    const handleIncrement = (count: number) => {
+      dispatch(
+        basketActions.add({
+          product: { id, price, name, description, imageUrl },
+          count: count,
+        })
+      );
+    };
+
+    const handleDecrement = (count: number) => {
+      if (count > 1) {
+        dispatch(
+          basketActions.add({
+            product: { id, price, name, description, imageUrl },
+            count: count,
+          })
+        );
+      } else {
+        dispatch(basketActions.remove(id));
+      }
+    };
     return (
       <div className={styleName} ref={ref}>
         <div className={style.title}>
@@ -42,7 +70,12 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
           <ProductItem title={t('widgets.product.cost')} value={price} />
           <ProductItem title={t('widgets.product.name')} value={name} />
           <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
-          <Basket initCount={0} disabled={disable && true} />
+          <Basket
+            initCount={_count}
+            disabled={disable && true}
+            handleIncrement={handleIncrement}
+            handleDecrement={handleDecrement}
+          />
         </div>
       </div>
     );

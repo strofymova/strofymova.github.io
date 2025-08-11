@@ -1,18 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ProductList } from '../product_list/ProductList';
-import styles from './layout.module.css';
-import { IProduct } from '../marketplace/products/Product';
-import FilterLayout from '../filter/FilterLayout';
+import styles from './product_layout.module.css';
+import { IProduct } from '../../../widgets/marketplace/products/Product';
+import { ProductList } from '../../../widgets/product_list/ProductList';
+import FilterLayout from '../../../widgets/filter/FilterLayout';
 
-interface ILayoutComponentProps {
+interface IProductLayoutComponentProps {
   products: IProduct[];
   onShowMore: () => void;
   onIntersection: () => void;
   infinityScroll?: boolean;
 }
 
-const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore, onIntersection, infinityScroll }) => {
+const ProductLayoutComponent: React.FC<IProductLayoutComponentProps> = ({
+  products,
+  onShowMore,
+  onIntersection,
+  infinityScroll,
+}) => {
   const { t } = useTranslation();
   const minWidthFilter = 200;
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,4 +58,4 @@ const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore
   );
 };
 
-export default LayoutComponent;
+export default ProductLayoutComponent;

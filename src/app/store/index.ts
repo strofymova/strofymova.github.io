@@ -3,6 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import { token } from './token';
 import { initialized } from './initialized';
 import { profile } from './profile';
+import { basket } from './basket';
+import { products } from './products';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +14,8 @@ export const store = configureStore({
     initialized,
     token,
     profile,
+    products,
+    basket,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });

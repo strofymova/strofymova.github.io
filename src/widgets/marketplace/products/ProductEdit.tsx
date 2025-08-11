@@ -11,13 +11,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from 'antd';
 import { clsx } from 'clsx';
+import { useDispatch } from 'react-redux';
+import { productsActions } from 'src/app/store/products';
 
 const productSchema = z.object({
   id: z.string(),
   name: z.string().nonempty('errors.is_required'),
   price: z.number().min(0.01, 'errors.invalid_price'),
   description: z.string().max(100, 'errors.invalid_description'),
-  imageUrl: z.string(),
+  imageUrl: z.null() || z.string(),
 });
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -43,13 +45,29 @@ export function ProductEdit({ id, price, imageUrl, name, description, onSave }: 
     mode: 'onBlur',
   });
 
+  const dispatcher = useDispatch();
   const onSubmit: SubmitHandler<ProductFormData> = (data) => {
     console.log('Submitted data:', data);
-    if (onSave) onSave(data);
+    const productData: IProduct = {
+      id: data.id,
+      name: data.name,
+      price: data.price,
+      description: data.description,
+      imageUrl: data.imageUrl,
+    };
+    dispatcher(productsActions.save(productData));
+    if (onSave) onSave(productData);
   };
 
   return (
-    <form className={clsx(styleName, style.edit)} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={clsx(styleName, style.edit)}
+      onSubmit={(e) => {
+        console.log('Form submitted'); // Добавьте эту строку
+        handleSubmit(onSubmit)(e);
+        console.log('Form errors:', JSON.stringify(errors));
+      }}
+    >
       <img className={style.img} src={imageUrl || unknowImageUrl} alt={name} />
       <div className={style.info}>
         <ProductEditItem

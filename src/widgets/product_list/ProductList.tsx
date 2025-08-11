@@ -45,14 +45,7 @@ export function ProductList({
     openModal();
   };
 
-  const handleOnSaveProduct = (saveProduct: IProduct) => {
-    if (_products.findIndex((product) => product.id === saveProduct.id) === -1) {
-      setProducts([saveProduct, ..._products]);
-    } else {
-      setProducts(
-        _products.map((product) => (product.id === editProduct.id ? { ...product, ...saveProduct } : product))
-      );
-    }
+  const handleOnSaveProduct = () => {
     setEditProduct(null);
     closeModal();
   };

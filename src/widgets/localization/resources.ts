@@ -53,6 +53,7 @@ export const resources = {
         },
       },
       screens: {
+        main: 'Main',
         profile: {
           title: 'Profile',
           logout: 'Logout',
@@ -77,6 +78,9 @@ export const resources = {
             title: 'Sign out',
             submit: 'Sign out',
           },
+        },
+        basket: {
+          title: 'Basket',
         },
       },
       forms: {
@@ -189,6 +193,7 @@ export const resources = {
         },
       },
       screens: {
+        main: 'Главная',
         profile: {
           title: 'Профиль',
           logout: 'Выйти',
@@ -213,6 +218,9 @@ export const resources = {
             title: 'Зарегистрироваться',
             submit: 'Зарегистрироваться',
           },
+        },
+        basket: {
+          title: 'Корзина',
         },
       },
       forms: {

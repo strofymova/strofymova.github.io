@@ -1,3 +1,5 @@
+import { IProduct } from 'src/widgets/marketplace/products/Product';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -159,4 +161,9 @@ export type UserInterface = {
   id: Scalars['ID']['output'];
   name?: Maybe<Scalars['String']['output']>;
   signUpDate: Scalars['String']['output'];
+};
+
+export type BasketProduct = {
+  product: IProduct;
+  count: number;
 };

@@ -11,6 +11,8 @@ interface IBasketProps {
   initCount: number;
   disabled: boolean;
   className?: string;
+  handleIncrement?: (count: number) => void;
+  handleDecrement?: (count: number) => void;
 }
 
 interface IBasketButtonProps {
@@ -55,20 +57,28 @@ function BasketCounterComponent({ count, onClickIncrement, onClickDecrement }: I
   );
 }
 
-export function Basket({ initCount, disabled, className }: IBasketProps) {
+export function Basket({ initCount, disabled, className, handleIncrement, handleDecrement }: IBasketProps) {
   const [count, setCount] = useState(initCount);
-  const handleIncrement = useCallback(() => {
-    setCount((prevCount) => getIncrement(prevCount));
-  }, []);
-  const handleDecrement = useCallback(() => {
-    setCount((prevCount) => getDecrement(prevCount));
-  }, []);
+  const _handleIncrement = useCallback(() => {
+    setCount((prevCount) => {
+      const newCount = getIncrement(prevCount);
+      handleIncrement(newCount);
+      return newCount;
+    });
+  }, [handleIncrement]);
+  const _handleDecrement = useCallback(() => {
+    setCount((prevCount) => {
+      const newCount = getDecrement(prevCount);
+      handleDecrement(newCount);
+      return newCount;
+    });
+  }, [handleDecrement]);
   return (
     <div className={clsx(className, style.main)}>
       {count === 0 ? (
-        <BasketButton onClick={handleIncrement} disabled={disabled} />
+        <BasketButton onClick={_handleIncrement} disabled={disabled} />
       ) : (
-        <BasketCounterComponent count={count} onClickIncrement={handleIncrement} onClickDecrement={handleDecrement} />
+        <BasketCounterComponent count={count} onClickIncrement={_handleIncrement} onClickDecrement={_handleDecrement} />
       )}
     </div>
   );
