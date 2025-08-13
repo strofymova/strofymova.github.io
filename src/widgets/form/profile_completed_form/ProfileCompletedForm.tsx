@@ -93,7 +93,6 @@ export const ProfileCompletedForm = memo<ProfileCompletedFormProps>(({ className
 
   return (
     <div className={cn(s.root, className)}>
-      {/* <Title className={s.title}>{t(`screens.profile.updateProfile.title`)}</Title> */}
       <ProfileForm formManager={formManager} />
       <Button type="primary" loading={loading} onClick={submitForm}>
         {t(`screens.profile.updateProfile.save`)}
