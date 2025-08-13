@@ -7,8 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { useThemeStyles } from '../../../hooks/useThemeStyles';
 import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
-import { basketActions, basketSelectors } from 'src/app/store/basket';
+import { basketActions, basketSelectors } from '../../../app/store/basket';
 import { useDispatch, useSelector } from 'react-redux';
+import { BasketProduct } from '../../../shared/server.types';
 
 export interface IProduct {
   id: string;
@@ -30,7 +31,9 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
 
     const dispatch = useDispatch();
     const basketItems = useSelector(basketSelectors.get);
-    const productInBasket = basketItems.find((basketProduct) => basketProduct.product.id === id);
+    const productInBasket: BasketProduct | undefined = basketItems?.find(
+      (basketProduct) => basketProduct.product.id === id
+    );
     const _count = productInBasket?.count || 0;
 
     const handleIncrement = (count: number) => {
@@ -58,12 +61,14 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
       <div className={styleName} ref={ref}>
         <div className={style.title}>
           {t('widgets.product.card')}
-          <Button
-            type="primary"
-            icon={<EditOutlined className={style.edit_button} />}
-            size="small"
-            onClick={() => onClick(id)}
-          />
+          {!disable && (
+            <Button
+              type="primary"
+              icon={<EditOutlined className={style.edit_button} />}
+              size="small"
+              onClick={() => onClick(id)}
+            />
+          )}
         </div>
         <img className={style.img} src={imageUrl === null ? unknowImageUrl : imageUrl} />
         <div className={style.info}>
@@ -72,7 +77,7 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
           <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
           <Basket
             initCount={_count}
-            disabled={disable && true}
+            disabled={false}
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
           />

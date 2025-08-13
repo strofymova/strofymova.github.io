@@ -1,7 +1,7 @@
 import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './index';
-import { BasketProduct } from 'src/shared/server.types';
+import { BasketProduct } from '../../shared/server.types';
 
 export const BASKET_KEY = 'basket';
 

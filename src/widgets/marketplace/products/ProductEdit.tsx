@@ -12,7 +12,7 @@ import { z } from 'zod';
 import { Button } from 'antd';
 import { clsx } from 'clsx';
 import { useDispatch } from 'react-redux';
-import { productsActions } from 'src/app/store/products';
+import { productsActions } from '../../../app/store/products';
 
 const productSchema = z.object({
   id: z.string(),

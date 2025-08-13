@@ -1,4 +1,4 @@
-import { generateUUID } from 'src/core/utility/GeneratorUtil';
+import { generateUUID } from '../core/utility/GeneratorUtil';
 import AccountService from '../core/services/AccountService';
 import { UserType } from '../core/services/types';
 

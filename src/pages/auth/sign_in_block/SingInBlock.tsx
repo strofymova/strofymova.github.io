@@ -15,7 +15,7 @@ import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/t
 import { isLongEnough, isNotDefinedString } from '../../../core/utility/validation';
 import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavigationState } from 'src/navigation/Navigation';
+import { NavigationState } from '../../../navigation/Navigation';
 
 export type SingInBlockProps = {
   className?: string;

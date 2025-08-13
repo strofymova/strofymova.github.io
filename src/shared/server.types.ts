@@ -1,4 +1,4 @@
-import { IProduct } from 'src/widgets/marketplace/products/Product';
+import { IProduct } from '../widgets/marketplace/products/Product';
 
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;

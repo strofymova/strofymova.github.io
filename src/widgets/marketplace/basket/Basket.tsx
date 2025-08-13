@@ -59,17 +59,22 @@ function BasketCounterComponent({ count, onClickIncrement, onClickDecrement }: I
 
 export function Basket({ initCount, disabled, className, handleIncrement, handleDecrement }: IBasketProps) {
   const [count, setCount] = useState(initCount);
+  React.useEffect(() => {
+    setCount(initCount);
+  }, [initCount]);
+
   const _handleIncrement = useCallback(() => {
     setCount((prevCount) => {
       const newCount = getIncrement(prevCount);
-      handleIncrement(newCount);
+      handleIncrement?.(newCount);
       return newCount;
     });
   }, [handleIncrement]);
+
   const _handleDecrement = useCallback(() => {
     setCount((prevCount) => {
       const newCount = getDecrement(prevCount);
-      handleDecrement(newCount);
+      handleDecrement?.(newCount);
       return newCount;
     });
   }, [handleDecrement]);

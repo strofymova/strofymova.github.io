@@ -3,6 +3,7 @@ export enum UserType {
   premium = 'Premium',
   gold = 'Gold',
   free = 'Free',
+  admin = 'Admin',
 }
 
 export interface IUser {

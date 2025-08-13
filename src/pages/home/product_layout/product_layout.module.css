@@ -31,31 +31,23 @@
     width: 77%;
 }
 
-.light {
-    background-color: var(--main-light-background-color);
-    color: var(--main-dark-backgroun-color);
-    border-color: var(--main-light-border-color);
-    .showMoreBtn {
-        border: solid 1px var(--main-light-dark-backgroun-color);
-        background-color:  var(--main-light-dark-backgroun-color);
-        color: var(--main-white-color);
-        opacity: 0.8;
-        &:hover {
-            border: solid 1px var( --main-light-background-color);
-        }
+.showMoreBtn {
+  &.light {
+    border: solid 1px var(--main-light-dark-backgroun-color);
+    background-color:  var(--main-light-dark-backgroun-color);
+    color: var(--main-white-color);
+    opacity: 0.8;
+    &:hover {
+        border: solid 1px var( --main-light-background-color);
     }
-}
+  }
 
-.dark {
-    background-color: var(--main-dark-backgroun-color);
-    color: var(--main-light-border-color);
-    border-color:var(--main-light-background-color);
-    .showMoreBtn {
-        background-color: var(--main-btn-light-color) !important;
-        color: var(--main-dark-backgroun-color);
-        border: solid 1px var(--main-btn-light-color);
-        &:hover {
-            border: solid 1px var(--main-dark-backgroun-color);
-        }
+  &.dark {
+    background-color: var(--main-btn-light-color) !important;
+    color: var(--main-dark-backgroun-color);
+    border: solid 1px var(--main-btn-light-color);
+    &:hover {
+        border: solid 1px var(--main-dark-backgroun-color);
     }
+  }
 }

@@ -24,6 +24,7 @@ export const resources = {
         ERR_INVALID_NICKNAME:
           'The alias must be at least 7 characters and can contain only numbers, letters and an underscore',
         invalid_description: 'The description is too long',
+        ERR_FAILED_LOAD_PRODUCTS: 'Unable to load products',
       },
       welcome: 'Welcome to my application!',
       description: 'This component demonstrates language switching.',
@@ -69,6 +70,7 @@ export const resources = {
           },
         },
         auth: {
+          authTitle: 'Authorization',
           title: 'Authentication',
           signIn: {
             title: 'Sign in',
@@ -81,6 +83,8 @@ export const resources = {
         },
         basket: {
           title: 'Basket',
+          total: 'Total',
+          empty: 'No products',
         },
       },
       forms: {
@@ -168,6 +172,7 @@ export const resources = {
         ERR_INVALID_NICKNAME:
           'Псевдоним должен быть от 7 символов и может содержать только числа, буквы и символ нижнего подчеркивания',
         invalid_description: 'Описание слишком длинное',
+        ERR_FAILED_LOAD_PRODUCTS: 'Не удалось загрузить продукты',
       },
       widgets: {
         save: 'Сохранить',
@@ -209,6 +214,7 @@ export const resources = {
           },
         },
         auth: {
+          authTitle: 'Авторизация',
           title: 'Аутентификация',
           signIn: {
             title: 'Войти',
@@ -221,6 +227,8 @@ export const resources = {
         },
         basket: {
           title: 'Корзина',
+          total: 'Итого',
+          empty: 'Нет товаров',
         },
       },
       forms: {
