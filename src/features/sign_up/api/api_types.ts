@@ -36,6 +36,7 @@ export enum ErrorCode {
   ERR_VALIDATION_ERROR = 'ERR_VALIDATION_ERROR',
   ERR_INVALID_QUERY_PARAMS = 'ERR_INVALID_QUERY_PARAMS',
   ERR_INTERNAL_SERVER = 'ERR_INTERNAL_SERVER',
+  ERR_NETWORK = 'ERR_NETWORK',
 }
 
 export interface ApiConfig {
@@ -45,8 +46,6 @@ export interface ApiConfig {
   ENDPOINTS: {
     AUTH: {
       SIGN_UP: string;
-      SIGN_IN: string;
-      PROFILE: string;
     };
   };
   // eslint-disable-next-line no-undef
@@ -58,3 +57,16 @@ export type SignUpType = {
   error: string | null;
   signUp: (userData: SignUpBody) => Promise<AuthResult>;
 };
+
+export interface SignUpState {
+  token: string | null;
+  isLoading: boolean;
+  error: ServerError | null;
+}
+
+export enum SignUpActionTypes {
+  SIGN_UP_START = 'SIGN_UP_START',
+  SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS',
+  SIGN_UP_FAILURE = 'SIGN_UP_FAILURE',
+  CLEAR_ERROR = 'CLEAR_ERROR',
+}

@@ -18,6 +18,13 @@ const config = {
 
   typescript: {
     reactDocgen: "react-docgen-typescript"
-  }
+  },
+
+  env: (config) => ({
+    ...config,
+    REACT_APP_API_BASE_URL:'http://19429ba06ff2.vps.myjino.ru/api',
+    REACT_APP_API_TIMEOUT:10000,
+    REACT_APP_COMMAND_ID:'storybook-s_trofymova_dev',
+  }),
 };
 export default config;

@@ -4,7 +4,6 @@ import { API_CONFIG } from '../api_config';
 import { apiService } from './apiService';
 
 class AuthService {
-  // Регистрация пользователя
   async signUp(userData: SignUpBody): Promise<AuthResult> {
     try {
       const payload: SignUpBody = {
@@ -21,7 +20,6 @@ class AuthService {
     }
   }
 
-  // Обработка ошибок авторизации
   private handleAuthError(error: Error & { data?: ServerErrors }): void {
     if (error.data?.errors?.[0]) {
       const serverError = error.data.errors[0];

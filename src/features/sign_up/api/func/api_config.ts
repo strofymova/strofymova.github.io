@@ -11,8 +11,6 @@ export const API_CONFIG: ApiConfig = {
   ENDPOINTS: {
     AUTH: {
       SIGN_UP: '/signup',
-      SIGN_IN: '/signin',
-      PROFILE: '/profile',
     },
   },
 

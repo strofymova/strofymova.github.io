@@ -5,7 +5,6 @@ import { z } from 'zod';
 import styles from './custom_sign_up.module.css';
 import { message } from 'antd';
 
-// Схема валидации Zod (только базовые проверки, основные проверки на сервере)
 const registrationSchema = z.object({
   email: z.string().min(1, { message: 'Email is required' }),
   password: z.string().min(1, { message: 'Password is required' }),
@@ -29,21 +28,16 @@ const CustomSignUpForm: React.FC<RegistrationFormProps> = ({ onSubmit, serverErr
     resolver: zodResolver(registrationSchema),
   });
 
-  // Обработка отправки формы
   const handleFormSubmit = async (data: CustomSignUpFormData) => {
     try {
       await onSubmit(data);
     } catch (error) {
-      // Эта часть будет обрабатываться через serverError prop
       console.error('Registration error:', error);
-      // throw error;
     }
   };
 
-  //Обработка ошибок с сервера
   React.useEffect(() => {
     if (serverError) {
-      // Если сервер вернул ошибку валидации email
       console.log(JSON.stringify(serverError));
       if (serverError.toLowerCase().includes('email') || serverError.toLowerCase().includes('invalid')) {
         setError('email', {
@@ -52,11 +46,6 @@ const CustomSignUpForm: React.FC<RegistrationFormProps> = ({ onSubmit, serverErr
         });
         message.error(serverError);
       } else {
-        // // Общая ошибка
-        // setError('root', {
-        //   type: 'server',
-        //   message: serverError,
-        // });
         message.error(serverError);
       }
     }
@@ -67,7 +56,6 @@ const CustomSignUpForm: React.FC<RegistrationFormProps> = ({ onSubmit, serverErr
       <h2>Sign up</h2>
 
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        {/* Email field */}
         <div className={styles.form_group}>
           <label htmlFor="email">Email</label>
           <input
@@ -80,7 +68,6 @@ const CustomSignUpForm: React.FC<RegistrationFormProps> = ({ onSubmit, serverErr
           {errors.email && <span className={styles.error_message}>{errors.email.message}</span>}
         </div>
 
-        {/* Password field */}
         <div className={styles.form_group}>
           <label htmlFor="password">Password</label>
           <input
@@ -93,10 +80,8 @@ const CustomSignUpForm: React.FC<RegistrationFormProps> = ({ onSubmit, serverErr
           {errors.password && <span className={styles.error_message}>{errors.password.message}</span>}
         </div>
 
-        {/* Server error */}
         {errors.root && <div className={styles.server_error}>{errors.root.message}</div>}
 
-        {/* Submit button */}
         <button type="submit" disabled={isLoading} className={isLoading ? 'loading' : ''}>
           {isLoading ? 'Registering...' : 'Register'}
         </button>

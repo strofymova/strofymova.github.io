@@ -4,7 +4,7 @@ import { StoreProvider } from '../api/react_toolkit_query/StoreProvider';
 import CustomSignUpRTK from './CustomSignUpRTK';
 
 export default {
-  title: 'Widgets/CustomSignUpContainer',
+  title: 'Widgets/CustomSignUpRTK',
   component: CustomSignUpRTK,
   parameters: {
     layout: 'centered',

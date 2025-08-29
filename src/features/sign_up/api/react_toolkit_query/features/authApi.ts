@@ -1,18 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { AuthResult, SignUpBody } from '../../api_types';
+import { AuthResult, ServerError, SignUpBody } from '../../api_types';
 
-export const getEnvVar = (key: string, defaultValue: string): string => {
-  if (typeof process !== 'undefined' && process.env) {
-    const envValue = process.env[key];
-    if (typeof envValue === 'string') {
-      return envValue;
-    }
-  }
-  return defaultValue;
-};
-
-const API_BASE_URL = getEnvVar('REACT_APP_API_BASE_URL', 'http://19429ba06ff2.vps.myjino.ru/api/');
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -32,7 +22,7 @@ export const authApi = createApi({
         body: credentials,
       }),
       transformErrorResponse: (baseQueryReturnValue: FetchBaseQueryError) =>
-        'data' in baseQueryReturnValue ? baseQueryReturnValue.data : baseQueryReturnValue,
+        'data' in baseQueryReturnValue ? (baseQueryReturnValue.data as ServerError) : baseQueryReturnValue,
     }),
   }),
 });
