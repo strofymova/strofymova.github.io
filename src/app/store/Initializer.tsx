@@ -1,5 +1,6 @@
 import { FC, useInsertionEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useInitialization } from '../../hooks/useInitialization';
 import { initializedActions } from './initialized';
 
 export const Initializer: FC = () => {
@@ -8,5 +9,8 @@ export const Initializer: FC = () => {
   useInsertionEffect(() => {
     dispatch(initializedActions.init());
   }, [dispatch]);
+
+  useInitialization();
+
   return null;
 };

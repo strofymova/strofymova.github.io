@@ -21,6 +21,8 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
+    /* justify-content: flex-end; */
+    float: inline-end;
     width: 98%;
 }
 
@@ -28,6 +30,8 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
+    /* justify-content: flex-end; */
+    float: inline-end;
     width: 77%;
 }
 
@@ -40,6 +44,11 @@
     &:hover {
         border: solid 1px var( --main-light-background-color);
     }
+
+    &:disabled {
+      background-color:  var(--main-light-dark-backgroun-color-dis);
+      border: solid 1px var(--main-light-dark-backgroun-color-dis);
+    }
   }
 
   &.dark {
@@ -49,5 +58,15 @@
     &:hover {
         border: solid 1px var(--main-dark-backgroun-color);
     }
+    &:disabled {
+      border: solid 1px var(--main-btn-light-color-dis);
+      background-color: var(--main-btn-light-color-dis) !important;
+    }
   }
+}
+
+.content_button {
+  display: flex;
+  flex-direction: row;
+  float: inline-end;
 }

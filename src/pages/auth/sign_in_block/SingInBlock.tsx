@@ -15,7 +15,7 @@ import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/t
 import { isLongEnough, isNotDefinedString } from '../../../core/utility/validation';
 import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavigationState } from '../../../navigation/Routing';
+import { RoutingState } from '../../../routing/Routing';
 
 export type SingInBlockProps = {
   className?: string;
@@ -92,7 +92,7 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
   const navigate = useNavigate();
 
   const handleOnClickSignUp = () => {
-    const state: NavigationState = location.state;
+    const state: RoutingState = location.state;
     navigate(state?.from || '/signUp');
   };
 

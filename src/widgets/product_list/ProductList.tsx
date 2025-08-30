@@ -1,19 +1,20 @@
-import React, { useRef, useState } from 'react';
 import { clsx } from 'clsx';
-import style from './product_list.module.css';
-import { IProduct, Product } from '../marketplace/products/Product';
-import { useIntersectionObserver } from '../../hooks/useIntersectionOrserver';
-import Modal from '../modal/Modal';
-import { useModalManager } from '../../hooks/useModalManager';
-import ProductEdit from '../marketplace/products/ProductEdit';
-import ProductAdd from '../marketplace/products/ProductAdd';
-import { generateUUID } from '../../core/utility/GeneratorUtil';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { profileSelectors } from '../../app/store/profile';
 import { useSelector } from 'react-redux';
-import { useAdminRight } from '../../hooks/useAdminRight';
-import CustomSpin from '../spin/CustomSpin';
+import { Product, ProductAddInput, ProductUpdateInput } from '../../shared/products.types';
 import { productsSelectors } from '../../app/store/products';
+import { profileSelectors } from '../../app/store/profile';
+import { useAdminRight } from '../../hooks/useAdminRight';
+import { useIntersectionObserver } from '../../hooks/useIntersectionOrserver';
+import { useModalManager } from '../../hooks/useModalManager';
+import { ProductCard } from '../marketplace/products/Product';
+import AddButton from '../add_button/AddButton';
+import ProductEdit from '../marketplace/products/ProductEdit';
+import Modal from '../modal/Modal';
+import CustomSpin from '../spin/CustomSpin';
+import style from './product_list.module.css';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 export interface IProductList {
   className?: string;
@@ -21,11 +22,24 @@ export interface IProductList {
   infinityScroll: boolean;
 }
 
+const mapProductToEditForm = ({ category, name, desc, price, photo }: Product) => ({
+  categoryId: category?.id ?? '',
+  name: name ?? '',
+  desc: desc ?? '',
+  price: price ?? 0,
+  photo: photo ?? null,
+});
+
 export const ProductList: React.FC<IProductList> = React.memo(
   ({ className, onIntersection, infinityScroll: infinityScroll = false }: IProductList): React.ReactNode => {
     const lastProductRef = useRef<HTMLDivElement>(null);
     const products = useSelector(productsSelectors.get);
     const profile = useSelector(profileSelectors.get);
+
+    const styleName = useThemeStyles(style.main, {
+      light: style.light,
+      dark: style.dark,
+    });
 
     useIntersectionObserver(
       lastProductRef,
@@ -39,12 +53,18 @@ export const ProductList: React.FC<IProductList> = React.memo(
     const { t } = useTranslation();
     const { isModalOpen, openModal, closeModal } = useModalManager();
 
-    const [editProduct, setEditProduct] = useState<IProduct>();
+    const [editProduct, setEditProduct] = useState<ProductAddInput | ProductUpdateInput>();
+    const [selectedId, setSelectedId] = useState<string>();
+
     const { isAdmin, isLoading } = useAdminRight(profile);
 
     const handleOnClickProduct = (id: string) => {
-      setEditProduct(products.find((product) => product.id === id));
-      openModal();
+      const selectedProduct = products.find((product) => product.id === id);
+      setSelectedId(id);
+      if (selectedProduct) {
+        setEditProduct(mapProductToEditForm(selectedProduct));
+        openModal();
+      }
     };
 
     const handleOnSaveProduct = () => {
@@ -53,13 +73,14 @@ export const ProductList: React.FC<IProductList> = React.memo(
     };
 
     const handleOnClickAddProduct = () => {
-      const addProduct: IProduct = {
-        id: generateUUID(),
+      const addProduct: ProductAddInput | ProductUpdateInput = {
         price: undefined,
-        imageUrl: null,
+        photo: null,
         name: undefined,
-        description: undefined,
+        desc: undefined,
+        categoryId: undefined,
       };
+      setSelectedId(null);
       setEditProduct(addProduct);
       openModal();
     };
@@ -67,24 +88,23 @@ export const ProductList: React.FC<IProductList> = React.memo(
     if (isLoading) {
       return <CustomSpin />;
     }
-
     return (
-      <div className={clsx(style.main, className)}>
-        {isAdmin && <ProductAdd onClick={handleOnClickAddProduct}></ProductAdd>}
+      <div className={clsx(styleName, className)}>
+        {isAdmin && <AddButton onClick={handleOnClickAddProduct} title={t('widgets.product.card')}></AddButton>}
         {products.map((product, index) => {
           const isLast = index === products.length - 1;
           return (
-            <Product
+            <ProductCard
               onClick={handleOnClickProduct}
               ref={infinityScroll && isLast ? lastProductRef : null}
               key={product.id}
               disable={!isAdmin}
-              {...product}
+              product={product}
             />
           );
         })}
         <Modal visible={isModalOpen} onClose={closeModal} title={t('widgets.product.edit')}>
-          <ProductEdit {...editProduct} onSave={handleOnSaveProduct}></ProductEdit>
+          <ProductEdit id={selectedId} productEdit={editProduct} onSave={handleOnSaveProduct} />
         </Modal>
       </div>
     );

@@ -5,6 +5,7 @@ import { initialized } from './initialized';
 import { profile } from './profile';
 import { basket } from './basket';
 import { products } from './products';
+import { categories } from './categories';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -16,6 +17,7 @@ export const store = configureStore({
     profile,
     products,
     basket,
+    categories,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });

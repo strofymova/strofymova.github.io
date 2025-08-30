@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
-import style from './product.module.css';
 import { clsx } from 'clsx';
+import React, { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
 import type { UseFormRegister } from 'react-hook-form';
-import { IProduct } from './Product';
+import { ProductAddInput, ProductUpdateInput } from 'src/shared/products.types';
+import style from './product_edit.module.css';
 
 export interface IProductEditItemProps {
   name: string;
@@ -17,7 +17,7 @@ export interface IProductEditItemProps {
 
 export const ProductEditItem = forwardRef<
   HTMLInputElement,
-  IProductEditItemProps & ReturnType<UseFormRegister<IProduct>>
+  IProductEditItemProps & ReturnType<UseFormRegister<ProductAddInput | ProductUpdateInput>>
 >(({ name, title, className, type, step, error, onBlur, onChange }: IProductEditItemProps, ref) => (
   <div className={clsx(className, style.item)}>
     <div className={style.item_title}>{title}</div>
@@ -30,7 +30,7 @@ export const ProductEditItem = forwardRef<
       onChange={onChange}
       onBlur={onBlur}
     />
-    {error && <span className="error-message">{error}</span>}
+    {error && <span className={style.error_msg}>{error}</span>}
   </div>
 ));
 ProductEditItem.displayName = 'ProductEditItem';

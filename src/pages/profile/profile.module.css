@@ -1,32 +1,57 @@
-.profile {
+.main {
   width: 40%;
   min-width: 300px;
   margin: auto;
-  & > button {
-    margin-bottom: 10px;
+
+  .orders_btn,
+  .settings_btn {
+    margin-top: 30px;
     width: 100%;
   }
 
   &.light {
-    > button {
+
+    .orders_btn,
+    .settings_btn {
       background-color: var(--main-dark-backgroun-color);
       color: var(--main-light-border-color);
+
+      .custom_icon {
+        color: var(--main-white-color);
+      }
+
       &:hover {
         background-color: var(--main-dark-backgroun-color) !important;
         color: var(--main-light-border-color) !important;
         opacity: 70%;
+
+        .custom_icon {
+          color: var(--main-white-color);
+        }
       }
     }
   }
 
   &.dark {
-    > button {
+
+    .orders_btn,
+    .settings_btn {
       background-color: var(--main-light-background-color);
       color: var(--main-dark-backgroun-color);
+
+      .custom_icon {
+        color: var(--main-dark-backgroun-color);
+      }
+
       &:hover {
         background-color: var(--main-light-background-color) !important;
         color: var(--main-dark-backgroun-color) !important;
         opacity: 70%;
+
+        .custom_icon {
+          color: var(--main-dark-backgroun-color);
+        }
+
       }
     }
   }

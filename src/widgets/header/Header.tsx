@@ -1,20 +1,16 @@
-import React from 'react';
-import Logo from '../logo/Logo';
-import styles from './header.module.css';
-import ThemeToggleButton from '../theme/ThemeToggleButton';
-import LocalizationSwitcher from '../localization/LocalizationSwitcher';
-import { useThemeStyles } from '../../hooks/useThemeStyles';
-import { NavLink } from 'react-router-dom';
-import type { NavLinkProps } from 'react-router-dom';
 import { clsx } from 'clsx';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import type { NavLinkProps } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { tokenSelectors } from '../../app/store/token';
-import { useQuery } from '@apollo/client';
-import { GET_PROFILE, GetProfileResponse } from '../../app/store/sagas/token/connections';
-import { profileActions } from '../../app/store/profile';
-import { message } from 'antd';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
+import LocalizationSwitcher from '../localization/LocalizationSwitcher';
+import Logo from '../logo/Logo';
+import ThemeToggleButton from '../theme/ThemeToggleButton';
+import styles from './header.module.css';
 
 export const getClassName: NavLinkProps['className'] = ({ isActive }) => clsx(styles.link, isActive && styles.active);
 
@@ -28,21 +24,6 @@ export function Header(): React.ReactNode {
 
   const token = useSelector<RootState, RootState['token']>(tokenSelectors.get);
   const isAuth = token != null && token != undefined;
-
-  const dispatch = useDispatch();
-  useQuery<GetProfileResponse>(GET_PROFILE, {
-    onCompleted: (data) => {
-      if (isAuth && data.profile) {
-        dispatch(profileActions.set(data.profile));
-      }
-    },
-    onError: (error) => {
-      if (isAuth) {
-        message.error(t(`errors.${error.message}`));
-      }
-    },
-    fetchPolicy: 'network-only',
-  });
 
   return (
     <div className={styleName}>

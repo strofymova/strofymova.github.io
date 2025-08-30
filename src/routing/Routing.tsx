@@ -1,15 +1,18 @@
 import React, { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Profile from '../pages/profile/Profile';
-import Basket from '../pages/basket/Basket';
-import NotFound from '../pages/not_found/NotFound';
-import Home from '../pages/home/Home';
+import Products from '../pages/products/Products';
 import Auth from '../pages/auth/Auth';
-import { ProtectedRoute } from './ProtectedRoute';
+import Basket from '../pages/basket/Basket';
+import Home from '../pages/home/Home';
+import NotFound from '../pages/not_found/NotFound';
+import Profile from '../pages/profile/Profile';
+import Settings from '../pages/settings/Settings';
+import Orders from '../pages/orders/Orders';
 import { GuestRoute } from './GuestRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 
 export type RoutingState = {
-  from ?: Location;
+  from?: Location;
 };
 
 export type RoutingProps = {
@@ -21,6 +24,7 @@ export const Routing: FC<RoutingProps> = ({ children }) => (
     {children}
     <Routes>
       <Route index element={<Home />} />
+      <Route path="/category/:id" element={<Products />} />
       <Route
         path="/auth"
         element={
@@ -34,6 +38,22 @@ export const Routing: FC<RoutingProps> = ({ children }) => (
         element={
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/settings"
+        element={
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/orders"
+        element={
+          <ProtectedRoute>
+            <Orders />
           </ProtectedRoute>
         }
       />

@@ -27,9 +27,7 @@ const BasketList: React.FC = () => {
     <ul className={styleName}>
       {products.map((basketProduct) => (
         <li key={basketProduct?.product.id} className={styles.item}>
-          <span>
-            {basketProduct.product.id} {basketProduct.product.name}
-          </span>
+          <span>{basketProduct.product.name}</span>
           <div>
             <span>
               {basketProduct.product.price} x {basketProduct.count} ={' '}

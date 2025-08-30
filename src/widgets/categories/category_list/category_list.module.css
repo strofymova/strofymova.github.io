@@ -1,0 +1,13 @@
+.main {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    > div {
+        margin-right: 10px;
+    }
+}
+
+.category_add {
+  width: 350px !important;
+}

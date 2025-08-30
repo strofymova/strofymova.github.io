@@ -4,22 +4,31 @@ import styles from './product_layout.module.css';
 import { ProductList } from '../../../widgets/product_list/ProductList';
 import FilterLayout from '../../../widgets/filter/FilterLayout';
 import { useThemeStyles } from '../../../hooks/useThemeStyles';
+import { useNavigate } from 'react-router-dom';
+import { SortingInput } from 'src/shared/server.types';
 
 interface IProductLayoutComponentProps {
   onShowMore: () => void;
   onIntersection: () => void;
   infinityScroll?: boolean;
+  hasMore?: boolean;
+  onSortChange: (newSorting: SortingInput) => void;
+  currentSorting: SortingInput;
 }
 
 const ProductLayoutComponent: React.FC<IProductLayoutComponentProps> = ({
   onShowMore,
   onIntersection,
   infinityScroll,
+  hasMore,
+  onSortChange,
+  currentSorting,
 }) => {
   const { t } = useTranslation();
   const minWidthFilter = 200;
   const containerRef = useRef<HTMLDivElement>(null);
   const [productListStyle, setProductListStyle] = useState(styles.products);
+  const navigate = useNavigate();
   const styleName = useThemeStyles(styles.showMoreBtn, {
     light: styles.light,
     dark: styles.dark,
@@ -42,15 +51,26 @@ const ProductLayoutComponent: React.FC<IProductLayoutComponentProps> = ({
     observer.observe(containerRef.current);
   }, [productListStyle]);
 
+  const onClickPrev = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <div className={styles.contentContainer}>
+        <FilterLayout ref={containerRef} sorting={currentSorting} onChangeSort={onSortChange} />
         <ProductList className={productListStyle} onIntersection={onIntersection} infinityScroll={infinityScroll} />
-        <FilterLayout ref={containerRef} />
       </div>
-      <button className={styleName} onClick={onShowMore}>
-        {t('widgets.product.showMore')}
-      </button>
+      <div className={styles.content_button}>
+        <button className={styleName} onClick={onClickPrev}>
+          {t('widgets.back')}
+        </button>
+        {!infinityScroll && (
+          <button className={styleName} onClick={onShowMore} disabled={!hasMore}>
+            {t('widgets.product.showMore')}
+          </button>
+        )}
+      </div>
     </>
   );
 };

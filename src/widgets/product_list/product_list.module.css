@@ -1,8 +1,22 @@
 .main {
-    display: inline-flex;
-    margin-top: 10px;
-    margin-left: 10px;
-    > div {
-        margin-right: 10px;
-    }
+  display: inline-flex;
+  margin-top: 10px;
+  margin-left: 30px;
+
+  /* justify-content: flex-end; */
+  >div {
+    margin-right: 10px;
+  }
+
+  &.light {
+    background-color: var(--main-light-background-color);
+    color: var(--main-dark-backgroun-color);
+    border-color: var(--main-light-border-color);
+  }
+
+  &.dark {
+    background-color: var(--main-dark-backgroun-color);
+    color: var(--main-light-border-color);
+    border-color: var(--main-light-background-color);
+  }
 }
