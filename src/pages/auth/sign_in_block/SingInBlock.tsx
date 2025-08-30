@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, ReactNode, useMemo } from 'react';
 import cn from 'clsx';
 import { useMutation } from '@apollo/client';
 import type { FormikConfig } from 'formik';
@@ -14,6 +14,8 @@ import { createErrorHandlers } from '../../../core/utility/createErrorHandlers';
 import { AuthFormErrors, AuthFormValues } from '../../../widgets/form/AuthForm/types';
 import { isLongEnough, isNotDefinedString } from '../../../core/utility/validation';
 import AuthForm from '../../../widgets/form/AuthForm/AuthForm';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { NavigationState } from '../../../navigation/Routing';
 
 export type SingInBlockProps = {
   className?: string;
@@ -23,6 +25,18 @@ const initialValues: AuthFormValues = {
   email: undefined,
   password: undefined,
 };
+
+interface ISignUpButtonProps {
+  handleOnClickSignUp: () => void;
+  title: string;
+}
+function SignUpButton({ handleOnClickSignUp, title }: ISignUpButtonProps): ReactNode {
+  return (
+    <Button className={s.signUpBtn} type="primary" onClick={handleOnClickSignUp}>
+      {title}
+    </Button>
+  );
+}
 
 export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockProps) => {
   const { t } = useTranslation();
@@ -73,6 +87,15 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
   });
 
   const { submitForm } = formik;
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleOnClickSignUp = () => {
+    const state: NavigationState = location.state;
+    navigate(state?.from || '/signUp');
+  };
+
   return (
     <div className={cn(s.root, className)}>
       <AuthForm formManager={formik} />
@@ -80,6 +103,7 @@ export const SingInBlock = memo<SingInBlockProps>(({ className }: SingInBlockPro
         <Button className={s.submit} loading={loading} type="primary" onClick={submitForm}>
           {t(`screens.auth.signIn.submit`)}
         </Button>
+        <SignUpButton handleOnClickSignUp={handleOnClickSignUp} title={t('widgets.authorization.signUp')} />
       </div>
     </div>
   );

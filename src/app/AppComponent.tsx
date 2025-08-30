@@ -1,6 +1,5 @@
 import React from 'react';
-import Layout from '../widgets/layout/Layout';
 
-const AppComponent: React.FC = () => <Layout />;
+const AppComponent: React.FC = () => <div />;
 
 export default AppComponent;

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useModalManager } from '../../hooks/useModalManager';
@@ -8,7 +8,6 @@ import { SingInBlock } from '../../pages/auth/sign_in_block/SingInBlock';
 import s from './authorization.module.css';
 import { useThemeStyles } from '../../hooks/useThemeStyles';
 import { SingUpBlock } from '../../pages/auth/sign_up_block/SingUpBlock';
-import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import { tokenSelectors } from '../../app/store/token';
 import { RootState } from '../../app/store';
@@ -21,7 +20,6 @@ enum ModalType {
 
 interface ModalState {
   type: ModalType;
-  handleOnClickSignUp?: () => void;
   title?: string;
 }
 
@@ -34,17 +32,6 @@ function Content({ type }: ModalState) {
     case ModalType.profile:
       return <ProfileCompletedForm className="profile" />;
   }
-}
-
-function SignUpButton({ type, handleOnClickSignUp, title }: ModalState): ReactNode {
-  if (type === ModalType.signIn) {
-    return (
-      <Button className={s.signUpBtn} type="primary" onClick={handleOnClickSignUp}>
-        {title}
-      </Button>
-    );
-  }
-  return null;
 }
 
 const AuthorizationButton: React.FC = () => {
@@ -66,10 +53,6 @@ const AuthorizationButton: React.FC = () => {
   const [title, setTitle] = useState(
     _isAuthorizated ? t('widgets.authorization.profile') : t('widgets.authorization.signIn')
   );
-
-  const handleOnClickSignUp = () => {
-    setModalType(ModalType.signUp);
-  };
 
   const handleOnCloseModal = () => {
     closeModal();
@@ -99,11 +82,6 @@ const AuthorizationButton: React.FC = () => {
       </button>
       <Modal className={s.modal} title={title} visible={isModalOpen} onClose={handleOnCloseModal}>
         <Content type={modalType} />
-        <SignUpButton
-          type={modalType}
-          handleOnClickSignUp={handleOnClickSignUp}
-          title={t('widgets.authorization.signUp')}
-        />
       </Modal>
     </>
   );

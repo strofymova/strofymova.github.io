@@ -1,22 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ProductList } from '../product_list/ProductList';
-import styles from './layout.module.css';
-import { IProduct } from '../marketplace/products/Product';
-import FilterLayout from '../filter/FilterLayout';
+import styles from './product_layout.module.css';
+import { ProductList } from '../../../widgets/product_list/ProductList';
+import FilterLayout from '../../../widgets/filter/FilterLayout';
+import { useThemeStyles } from '../../../hooks/useThemeStyles';
 
-interface ILayoutComponentProps {
-  products: IProduct[];
+interface IProductLayoutComponentProps {
   onShowMore: () => void;
   onIntersection: () => void;
   infinityScroll?: boolean;
 }
 
-const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore, onIntersection, infinityScroll }) => {
+const ProductLayoutComponent: React.FC<IProductLayoutComponentProps> = ({
+  onShowMore,
+  onIntersection,
+  infinityScroll,
+}) => {
   const { t } = useTranslation();
   const minWidthFilter = 200;
   const containerRef = useRef<HTMLDivElement>(null);
   const [productListStyle, setProductListStyle] = useState(styles.products);
+  const styleName = useThemeStyles(styles.showMoreBtn, {
+    light: styles.light,
+    dark: styles.dark,
+  });
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -38,19 +45,14 @@ const LayoutComponent: React.FC<ILayoutComponentProps> = ({ products, onShowMore
   return (
     <>
       <div className={styles.contentContainer}>
-        <ProductList
-          products={products}
-          className={productListStyle}
-          onIntersection={onIntersection}
-          infinityScroll={infinityScroll}
-        />
-        <FilterLayout ref={containerRef}></FilterLayout>
+        <ProductList className={productListStyle} onIntersection={onIntersection} infinityScroll={infinityScroll} />
+        <FilterLayout ref={containerRef} />
       </div>
-      <button className={styles.showMoreBtn} onClick={onShowMore}>
+      <button className={styleName} onClick={onShowMore}>
         {t('widgets.product.showMore')}
       </button>
     </>
   );
 };
 
-export default LayoutComponent;
+export default ProductLayoutComponent;

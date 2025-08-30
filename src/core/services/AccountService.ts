@@ -1,10 +1,11 @@
-import { IProductDetail } from 'src/widgets/marketplace/products/ProductDetailed';
+import { IProductDetail } from '../../widgets/marketplace/products/ProductDetailed';
 import { Category, ICategoryDiscount, IUser, IUserTypeDiscount, UserType } from './types';
 import { getCategoryUserTypeDiscount } from '../../test/mock/fetchCategoryUserTypeMock';
 import { getUserTypes } from '../../test/mock/fetchUserTypeMock';
+import { getUsers } from '../../test/mock/fetchUserMock';
 
 const AccountService = async () => {
-  const users: IUser[] = [];
+  const users: IUser[] = await getUsers();
   let userTypeDiscounts: IUserTypeDiscount[];
   try {
     userTypeDiscounts = await getUserTypes();
