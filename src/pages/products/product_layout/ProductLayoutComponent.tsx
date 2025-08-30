@@ -65,9 +65,10 @@ const ProductLayoutComponent: React.FC<IProductLayoutComponentProps> = ({
         <button className={styleName} onClick={onClickPrev}>
           {t('widgets.back')}
         </button>
-        <button className={styleName} onClick={onShowMore} disabled={!hasMore}>
+        {!infinityScroll && <button className={styleName} onClick={onShowMore} disabled={!hasMore}>
           {t('widgets.product.showMore')}
         </button>
+        }
       </div>
     </>
   );

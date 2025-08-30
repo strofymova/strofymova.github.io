@@ -14,6 +14,7 @@ import ProductEdit from '../marketplace/products/ProductEdit';
 import Modal from '../modal/Modal';
 import CustomSpin from '../spin/CustomSpin';
 import style from './product_list.module.css';
+import { useThemeStyles } from '../../hooks/useThemeStyles';
 
 export interface IProductList {
   className?: string;
@@ -34,6 +35,11 @@ export const ProductList: React.FC<IProductList> = React.memo(
     const lastProductRef = useRef<HTMLDivElement>(null);
     const products = useSelector(productsSelectors.get);
     const profile = useSelector(profileSelectors.get);
+
+    const styleName = useThemeStyles(style.main, {
+      light: style.light,
+      dark: style.dark,
+    });
 
     useIntersectionObserver(
       lastProductRef,
@@ -83,7 +89,7 @@ export const ProductList: React.FC<IProductList> = React.memo(
       return <CustomSpin />;
     }
     return (
-      <div className={clsx(style.main, className)}>
+      <div className={clsx(styleName, className)}>
         {isAdmin && <AddButton onClick={handleOnClickAddProduct} title={t('widgets.product.card')}></AddButton>}
         {products.map((product, index) => {
           const isLast = index === products.length - 1;

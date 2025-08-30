@@ -33,9 +33,9 @@ const ProductLayoutContainer: React.FC<IProductLayoutContainerProps> = ({
 
   const handleIntersection = useCallback(() => {
     if (infinityScroll) {
-      handleShowMore();
+      loadMoreProducts(currentPage + 1);
     }
-  }, [infinityScroll, handleShowMore]);
+  }, [infinityScroll, loadMoreProducts, currentPage]);
 
   if (loading && productsTotalCount === 0) {
     return <CustomSpin />;

@@ -4,7 +4,7 @@ import ProductLayout from '../products/product_layout/ProductLayout';
 
 const Products: React.FC = () => (
   <Layout>
-    <ProductLayout infinityScroll={false} />
+    <ProductLayout infinityScroll={true} />
   </Layout>
 );
 

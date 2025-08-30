@@ -13,7 +13,7 @@ import Modal from '../../../widgets/modal/Modal';
 import CategoryCard from '../category/CategoryCard';
 import CategoryEdit from '../category_edit/CategoryEdit';
 import style from './category_list.module.css';
-import CustomSpin from 'src/widgets/spin/CustomSpin';
+import CustomSpin from '../../../widgets/spin/CustomSpin';
 
 export interface ICategoryList {
   className?: string;
