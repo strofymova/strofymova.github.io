@@ -46,7 +46,13 @@ export function* setBasket(): Generator {
 export function* basketSaga() {
   yield call(getBasket);
   yield takeEvery(
-    [basketActions.clear().type, basketActions.set().type, basketActions.remove().type, basketActions.add().type],
+    [
+      basketActions.clear().type,
+      basketActions.set().type,
+      basketActions.update().type,
+      basketActions.remove().type,
+      basketActions.add().type,
+    ],
     setBasket
   );
 }

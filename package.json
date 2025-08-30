@@ -84,6 +84,7 @@
     "antd": "^5.26.6",
     "broadcastchannel-polyfill": "^1.0.1",
     "clsx": "^1.2.1",
+    "date-fns": "^4.1.0",
     "formik": "^2.4.6",
     "graphql": "^16.11.0",
     "i18next": "^25.2.1",

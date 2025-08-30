@@ -7,7 +7,7 @@ import { ClientProvider } from './client';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Initializer } from './store/Initializer';
-import { Routing } from '../navigation/Routing';
+import { Routing } from '../routing/Routing';
 
 export enum Theme {
   light = 'light',

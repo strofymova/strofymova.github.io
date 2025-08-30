@@ -9,7 +9,6 @@
         "plugin:react/jsx-runtime", // позволяет не импортировать реакт
         "plugin:react-hooks/recommended", //поддержка хуков
         "plugin:import/recommended", // подсказки при импорте
-        // "airbnb",
         "prettier", // отключает конфликты с prettier
         "plugin:prettier/recommended",
         "plugin:jest/recommended",

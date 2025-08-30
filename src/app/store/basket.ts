@@ -2,6 +2,7 @@ import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolki
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './index';
 import { BasketProduct } from '../../shared/server.types';
+import { Product } from 'src/shared/products.types';
 
 export const BASKET_KEY = 'basket';
 
@@ -10,6 +11,7 @@ export const basketSlice = createSlice<
   {
     set: CaseReducer<BasketProduct[], PayloadAction<BasketProduct[]>>;
     add: CaseReducer<BasketProduct[], PayloadAction<BasketProduct>>;
+    update: CaseReducer<BasketProduct[], PayloadAction<Product>>;
     remove: CaseReducer<BasketProduct[], PayloadAction<string>>;
     clear: CaseReducer<BasketProduct[], PayloadAction<void>>;
   },
@@ -22,11 +24,9 @@ export const basketSlice = createSlice<
   reducers: {
     set: (_, action) => action.payload,
     add: (state, action) => {
-      console.log('befor add: ', JSON.stringify(state));
       const existingProductIndex = state.findIndex(
         (basketProduct) => basketProduct.product.id === action.payload.product.id
       );
-      console.log('existingIndex:', existingProductIndex);
       if (existingProductIndex >= 0) {
         const updatedState = [...state];
         const existingItem = updatedState[existingProductIndex];
@@ -39,6 +39,19 @@ export const basketSlice = createSlice<
         const productToAdd = action.payload;
         return [...state, productToAdd];
       }
+    },
+    update: (state, action) => {
+      console.log('upd: ', action.payload);
+      const existingProductIndex = state.findIndex((basketProduct) => basketProduct.product.id === action.payload.id);
+      if (existingProductIndex === -1) {
+        return state;
+      }
+      const updatedState = [...state];
+      updatedState[existingProductIndex] = {
+        ...updatedState[existingProductIndex],
+        product: action.payload,
+      };
+      return updatedState;
     },
     remove: (state, action) => state.filter((basketProduct) => basketProduct.product.id !== action.payload),
     clear: () => [],

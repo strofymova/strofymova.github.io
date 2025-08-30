@@ -1,0 +1,73 @@
+import { useQuery } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { categoriesActions } from '../app/store/categories';
+import { profileActions } from '../app/store/profile';
+import { GET_PROFILE, GetProfileResponse } from '../app/store/sagas/token/connections';
+import { tokenSelectors } from '../app/store/token';
+import { GET_CATEGORY, GetCategoryResponseQueries } from '../widgets/categories/category_list/query';
+
+export const useInitialization = () => {
+  const token = useSelector(tokenSelectors.get);
+  const isAuth = token != null && token != undefined;
+  const [error, setError] = useState<string | null>(null);
+
+  const dispatch = useDispatch();
+  const {
+    refetch: refetchProfile,
+    loading: profileLoading,
+    error: profileError,
+  } = useQuery<GetProfileResponse>(GET_PROFILE, {
+    skip: !isAuth,
+    onCompleted: (data) => {
+      if (data.profile) {
+        dispatch(profileActions.set(data.profile));
+      }
+    },
+    onError: (profileLoadingErr) => {
+      setError(profileLoadingErr.message);
+    },
+    fetchPolicy: 'network-only',
+    notifyOnNetworkStatusChange: true,
+  });
+
+  const {
+    refetch: refetchCategories,
+    loading: categoriesLoading,
+    error: categoriesError,
+  } = useQuery<GetCategoryResponseQueries>(GET_CATEGORY, {
+    skip: true,
+    onCompleted: (data) => {
+      if (data) {
+        const categories = data.categories.getMany.data;
+        dispatch(categoriesActions.set({ items: categories, lastPage: 1, totalCount: categories.length }));
+      }
+    },
+    onError: (categoryLoadingErr) => {
+      setError(categoryLoadingErr.message);
+    },
+    fetchPolicy: 'network-only',
+    notifyOnNetworkStatusChange: true,
+  });
+
+  useEffect(() => {
+    if (isAuth) {
+      refetchProfile();
+    } else {
+      dispatch(profileActions.set(null));
+    }
+    refetchCategories();
+  }, [isAuth, refetchProfile, refetchCategories, dispatch]);
+
+  useEffect(() => {
+    if (profileError) {
+      setError(profileError.message);
+    } else if (categoriesError) {
+      setError(categoriesError.message);
+    } else {
+      setError(null);
+    }
+  }, [profileError, categoriesError]);
+
+  return { error, loading: profileLoading || categoriesLoading };
+};

@@ -10,19 +10,16 @@ import { EditOutlined } from '@ant-design/icons';
 import { basketActions, basketSelectors } from '../../../app/store/basket';
 import { useDispatch, useSelector } from 'react-redux';
 import { BasketProduct } from '../../../shared/server.types';
+import type { Product } from 'src/shared/products.types';
 
-export interface IProduct {
-  id: string;
-  price: number;
-  imageUrl: string | null;
-  name: string;
-  description: string;
+export interface IProductCardProps {
+  product: Product;
   disable?: boolean;
   onClick?: (id: string) => void;
 }
 
-export const Product = forwardRef<HTMLDivElement, IProduct>(
-  ({ id, price, imageUrl, name, description, disable, onClick }, ref) => {
+export const ProductCard = forwardRef<HTMLDivElement, IProductCardProps>(
+  ({ product: { id, price, name, desc, photo, commandId, category, createdAt, updatedAt }, disable, onClick }, ref) => {
     const { t } = useTranslation();
     const styleName = useThemeStyles(style.main, {
       light: style.light,
@@ -39,7 +36,7 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
     const handleIncrement = (count: number) => {
       dispatch(
         basketActions.add({
-          product: { id, price, name, description, imageUrl },
+          product: { id, price, name, desc, photo, commandId, category, createdAt, updatedAt },
           count: count,
         })
       );
@@ -49,7 +46,7 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
       if (count > 1) {
         dispatch(
           basketActions.add({
-            product: { id, price, name, description, imageUrl },
+            product: { id, price, name, desc, photo, commandId, category, createdAt, updatedAt },
             count: count,
           })
         );
@@ -70,11 +67,11 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
             />
           )}
         </div>
-        <img className={style.img} src={imageUrl === null ? unknowImageUrl : imageUrl} />
+        <img className={style.img} src={photo === null ? unknowImageUrl : photo} />
         <div className={style.info}>
           <ProductItem title={t('widgets.product.cost')} value={price} />
           <ProductItem title={t('widgets.product.name')} value={name} />
-          <ProductItem className={style.desc} title={t('widgets.product.description')} value={description} />
+          <ProductItem className={style.desc} title={t('widgets.product.description')} value={desc} />
           <Basket
             initCount={_count}
             disabled={false}
@@ -87,5 +84,5 @@ export const Product = forwardRef<HTMLDivElement, IProduct>(
   }
 );
 
-Product.displayName = 'Product';
-export default Product;
+ProductCard.displayName = 'Product';
+export default ProductCard;

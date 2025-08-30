@@ -1,21 +1,22 @@
 import type { CaseReducer, PayloadAction, SliceSelectors } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { Product } from 'src/shared/products.types';
 import { RootState } from './index';
-import { IProduct } from '../../widgets/marketplace/products/Product';
 
 export const PRODUCTS_KEY = 'products';
 
-interface ProductsState {
-  items: IProduct[];
+export interface ProductsState {
+  items: Product[];
+  lastPage?: number;
   totalCount: number;
 }
 
 export const productsSlice = createSlice<
   ProductsState,
   {
-    set: CaseReducer<ProductsState, PayloadAction<IProduct[]>>;
-    add: CaseReducer<ProductsState, PayloadAction<IProduct[]>>;
-    save: CaseReducer<ProductsState, PayloadAction<IProduct>>;
+    set: CaseReducer<ProductsState, PayloadAction<ProductsState>>;
+    add: CaseReducer<ProductsState, PayloadAction<ProductsState>>;
+    save: CaseReducer<ProductsState, PayloadAction<Product>>;
     reset: CaseReducer<ProductsState>;
   },
   'products',
@@ -26,15 +27,18 @@ export const productsSlice = createSlice<
   initialState: {
     items: [],
     totalCount: 0,
+    lastPage: 0,
   },
   reducers: {
     set: (state, action) => {
-      state.items = action.payload;
-      state.totalCount = action.payload.length;
+      state.items = action.payload.items;
+      state.totalCount = action.payload.items.length;
+      state.lastPage = action.payload.lastPage;
     },
     add: (state, action) => {
-      state.items = [...state.items, ...action.payload];
-      state.totalCount += action.payload.length;
+      state.items = [...action.payload.items, ...state.items];
+      state.totalCount += action.payload.items.length;
+      state.lastPage = action.payload.lastPage;
     },
     save: (state, action) => {
       const existingIndex = state.items.findIndex((product) => product.id === action.payload.id);
@@ -48,6 +52,7 @@ export const productsSlice = createSlice<
     reset: (state) => {
       state.items = [];
       state.totalCount = 0;
+      state.lastPage = 0;
     },
   },
 });
@@ -57,11 +62,12 @@ export const productsActions = {
 };
 
 export const productsSelectors = {
-  get: (state: RootState): IProduct[] => state.products.items,
+  get: (state: RootState): Product[] => state.products.items,
+  getLastPage: (state: RootState): number => state.products.lastPage,
   getTotalCount: (state: RootState): number => state.products.totalCount,
   getById:
     (id: string) =>
-    (state: RootState): IProduct | undefined =>
+    (state: RootState): Product | undefined =>
       state.products.items.find((product) => product.id === id),
 };
 

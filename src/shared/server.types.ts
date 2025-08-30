@@ -1,4 +1,6 @@
-import { IProduct } from '../widgets/marketplace/products/Product';
+import { CategoryMutations, CategoryQueries } from './categories.types';
+import { OrderMutations, OrderQueries } from './orders.types';
+import { Product, ProductMutations, ProductQueries } from './products.types';
 
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -14,6 +16,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  Date: { input: string; output: string };
 };
 
 export type Animal = Cat | Dog;
@@ -72,12 +75,6 @@ export type Dog = {
   name?: Maybe<Scalars['String']['output']>;
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  customers?: Maybe<CustomerMutations>;
-  profile?: Maybe<ProfileMutations>;
-};
-
 export type Profile = UserInterface & {
   __typename?: 'Profile';
   about?: Maybe<Scalars['String']['output']>;
@@ -121,9 +118,18 @@ export type ProfilePasswordMutationsChangeArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  animals?: Maybe<Array<Maybe<Animal>>>;
-  customers?: Maybe<Array<Maybe<Customer>>>;
   profile?: Maybe<Profile>;
+  products?: Maybe<ProductQueries>;
+  orders?: Maybe<OrderQueries>;
+  categories?: Maybe<CategoryQueries>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  products?: Maybe<ProductMutations>;
+  profile?: Maybe<ProfileMutations>;
+  categories?: Maybe<CategoryMutations>;
+  orders?: Maybe<OrderMutations>;
 };
 
 export type QueryAnimalsArgs = {
@@ -163,7 +169,40 @@ export type UserInterface = {
   signUpDate: Scalars['String']['output'];
 };
 
+export type DateRange = {
+  __typename?: 'DateRange';
+  gte?: Maybe<Scalars['Date']['output']>;
+  lte?: Maybe<Scalars['Date']['output']>;
+};
+
+export type PaginationInput = {
+  __typename?: 'PaginationInput';
+  pageNumber?: Maybe<Scalars['Int']['output']>;
+  pageSize?: Maybe<Scalars['Int']['output']>;
+};
+
+export type ResponsePagination = {
+  pageNumber?: Maybe<Scalars['Int']['output']>;
+  pageSize?: Maybe<Scalars['Int']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+export type SortField = 'id' | 'createdAt' | 'updatedAt' | 'date' | 'name';
+
+export type SortType = 'ASC' | 'DESC';
+
+export type SortingInput = {
+  __typename?: 'SortingInput';
+  field?: Maybe<SortField>;
+  type?: Maybe<SortType>;
+};
+
+export type Sorting = {
+  field?: Maybe<SortField>;
+  type?: Maybe<SortType>;
+};
+
 export type BasketProduct = {
-  product: IProduct;
+  product: Product;
   count: number;
 };

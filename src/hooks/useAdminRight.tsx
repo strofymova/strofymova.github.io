@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import AccountService from '../core/services/AccountService';
-import { UserType } from '../core/services/types';
-import { Profile } from '../shared/server.types';
+import { useEffect, useState } from 'react';
+import { Profile } from 'src/shared/server.types';
+
+const ADMIN_LOGIN = 'sunlight-vrn@mail.ru';
 
 export const useAdminRight = (profile: Profile) => {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const checkAdminStatus = async () => {
       try {
         setIsLoading(true);
-        const service = await AccountService();
 
         if (profile?.email) {
-          const user = service.getUser(profile.email);
-          setIsAdmin(user?.type === UserType.admin);
+          setIsAdmin(profile.email === ADMIN_LOGIN);
         } else {
           setIsAdmin(false);
         }

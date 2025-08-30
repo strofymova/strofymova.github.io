@@ -24,6 +24,7 @@ export const resources = {
         ERR_INVALID_NICKNAME:
           'The alias must be at least 7 characters and can contain only numbers, letters and an underscore',
         invalid_description: 'The description is too long',
+        invalid_price: 'Invalid price',
         ERR_FAILED_LOAD_PRODUCTS: 'Unable to load products',
       },
       welcome: 'Welcome to my application!',
@@ -31,8 +32,10 @@ export const resources = {
       close: 'Close',
       open: 'Open',
       widgets: {
+        back: 'Back',
         save: 'Save',
         changeTheme: 'Change theme',
+        selectSort: 'Select sorting',
         product: {
           card: 'Product card',
           cardDetailedTitle: 'Product description detailed',
@@ -43,6 +46,7 @@ export const resources = {
           showMore: 'Show more',
           add: 'Add product',
           edit: 'Edit',
+          photo: 'Link to image',
         },
         basket: {
           add: 'Add to basket',
@@ -51,6 +55,22 @@ export const resources = {
           signIn: 'Sign in',
           profile: 'Profile',
           signUp: 'Sign up',
+        },
+        category: {
+          card: 'Category card',
+          name: 'Name',
+          photo: 'Link to picture',
+        },
+        profile: {
+          setting: 'Settings',
+          orders: 'Orders',
+        },
+        orders: {
+          no_orders: 'No orders',
+          order_num: 'Order №',
+          at: 'at',
+          status: 'Status',
+          success: 'Order success sended',
         },
       },
       screens: {
@@ -85,6 +105,7 @@ export const resources = {
           title: 'Basket',
           total: 'Total',
           empty: 'No products',
+          send_order: 'Send order',
         },
       },
       forms: {
@@ -172,11 +193,14 @@ export const resources = {
         ERR_INVALID_NICKNAME:
           'Псевдоним должен быть от 7 символов и может содержать только числа, буквы и символ нижнего подчеркивания',
         invalid_description: 'Описание слишком длинное',
+        invalid_price: 'Некорректная стоимость',
         ERR_FAILED_LOAD_PRODUCTS: 'Не удалось загрузить продукты',
       },
       widgets: {
+        back: 'Назад',
         save: 'Сохранить',
         changeTheme: 'Сменить тему',
+        selectSort: 'Выберите сортировку',
         product: {
           card: 'Карточка товара',
           cardDetailedTitle: 'Подробное описание товара',
@@ -187,6 +211,7 @@ export const resources = {
           showMore: 'Показать еще',
           add: 'Добавить продукт',
           edit: 'Редактировать',
+          photo: 'Ссылка на картинку',
         },
         basket: {
           add: 'В корзину',
@@ -195,6 +220,22 @@ export const resources = {
           signIn: 'Авторизоваться',
           profile: 'Профиль',
           signUp: 'Регистрация',
+        },
+        category: {
+          card: 'Карточка категории',
+          name: 'Название',
+          photo: 'Ссылка на картинку',
+        },
+        profile: {
+          setting: 'Настройки',
+          orders: 'Заказы',
+        },
+        orders: {
+          no_orders: 'Нет заказов',
+          order_num: 'Заказ №',
+          at: 'от',
+          status: 'Статус',
+          success: 'Заказ успешно отправлен',
         },
       },
       screens: {
@@ -229,6 +270,7 @@ export const resources = {
           title: 'Корзина',
           total: 'Итого',
           empty: 'Нет товаров',
+          send_order: 'Отправить заказ',
         },
       },
       forms: {
