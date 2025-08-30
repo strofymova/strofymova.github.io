@@ -7,7 +7,7 @@ import { ClientProvider } from './client';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Initializer } from './store/Initializer';
-import { Navigation } from '../navigation/Navigation';
+import { Routing } from '../navigation/Routing';
 
 export enum Theme {
   light = 'light',
@@ -48,10 +48,10 @@ const AppContainer = () => {
       <ThemeContext.Provider value={{ theme, handleSwitchTheme }}>
         <ClientProvider>
           <Provider store={store}>
-            <Navigation>
+            <Routing>
               <Initializer />
               <AppComponent />
-            </Navigation>
+            </Routing>
           </Provider>
         </ClientProvider>
       </ThemeContext.Provider>
