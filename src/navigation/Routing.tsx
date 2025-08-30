@@ -8,15 +8,15 @@ import Auth from '../pages/auth/Auth';
 import { ProtectedRoute } from './ProtectedRoute';
 import { GuestRoute } from './GuestRoute';
 
-export type NavigationState = {
-  from?: Location;
+export type RoutingState = {
+  from ?: Location;
 };
 
-export type NavigationProps = {
+export type RoutingProps = {
   children: React.ReactNode;
 };
 
-export const Navigation: FC<NavigationProps> = ({ children }) => (
+export const Routing: FC<RoutingProps> = ({ children }) => (
   <BrowserRouter>
     {children}
     <Routes>
